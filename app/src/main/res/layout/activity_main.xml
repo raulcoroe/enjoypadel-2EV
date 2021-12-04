@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#303030"
     android:clipToPadding="false"
-    android:padding="15dp"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,10 +24,10 @@
             android:layout_height="0dp"
             android:layout_margin="30dp"
             android:layout_weight="1"
-            android:background="#94AFC5"
-            android:drawableBottom="@mipmap/ic_launcher"
+            android:background="@drawable/round_button"
+            android:drawableBottom="@mipmap/ic_launcher_player"
             android:fontFamily="@font/audiowide"
-            android:padding="15dp"
+            android:onClick="selectPlayers"
             android:text="PLAYERS"
             android:textAlignment="center"
             android:textColor="@color/black"
@@ -41,10 +41,9 @@
             android:layout_height="0dp"
             android:layout_margin="30dp"
             android:layout_weight="1"
-            android:background="#94AFC5"
-            android:drawableBottom="@mipmap/ic_launcher"
+            android:background="@drawable/round_button"
+            android:drawableBottom="@mipmap/ic_launcher_team"
             android:fontFamily="@font/audiowide"
-            android:padding="15dp"
             android:text="TEAMS"
             android:textAlignment="center"
             android:textColor="@color/black"
@@ -58,12 +57,11 @@
             android:layout_height="0dp"
             android:layout_margin="30dp"
             android:layout_weight="1"
-            android:background="#94AFC5"
+            android:background="@drawable/round_button"
             android:bottomLeftRadius="10dp"
             android:bottomRightRadius="10dp"
-            android:drawableBottom="@mipmap/ic_launcher"
+            android:drawableBottom="@mipmap/ic_launcher_match"
             android:fontFamily="@font/audiowide"
-            android:padding="15dp"
             android:text="MATCHES"
             android:textAlignment="center"
             android:textColor="@color/black"
@@ -72,4 +70,4 @@
 
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
