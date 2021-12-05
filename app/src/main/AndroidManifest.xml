@@ -10,14 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EnjoyPadel">
         <activity
-            android:name=".AddPlayerActivity"
+            android:name=".acitivities.Preferences"
             android:exported="false" />
         <activity
-            android:name=".PlayerActivity"
+            android:name=".acitivities.AddPlayerActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".acitivities.PlayerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".acitivities.MainActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,4 +34,6 @@
             android:resource="@array/preloaded_fonts" />
     </application>
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 </manifest>

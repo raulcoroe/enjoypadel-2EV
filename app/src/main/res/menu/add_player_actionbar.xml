@@ -7,4 +7,7 @@
         android:icon="@android:drawable/ic_input_add"
         android:title="Add Player"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/preferences"
+        android:title="Preferencias" />
 </menu>

@@ -1,9 +1,14 @@
-package com.svalero.enjoypadel;
+package com.svalero.enjoypadel.acitivities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+
+import com.svalero.enjoypadel.R;
 
 public class MainActivity extends AppCompatActivity {
 

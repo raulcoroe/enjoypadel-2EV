@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    tools:context=".AddPlayerActivity">
+    tools:context=".acitivities.AddPlayerActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -22,7 +22,7 @@
             android:layout_margin="10dp"
             android:ems="10"
             android:hint="Name"
-            android:inputType="textPersonName"
+            android:inputType="textPersonName|textCapSentences"
             android:minHeight="48dp" />
 
         <EditText
@@ -32,7 +32,7 @@
             android:layout_margin="10dp"
             android:ems="10"
             android:hint="Surname"
-            android:inputType="textPersonName"
+            android:inputType="textPersonName|textCapSentences"
             android:minHeight="48dp" />
 
         <EditText
@@ -42,7 +42,7 @@
             android:layout_margin="10dp"
             android:ems="10"
             android:hint="Level"
-            android:inputType="textPersonName"
+            android:inputType="textPersonName|textCapSentences"
             android:minHeight="48dp" />
 
         <CheckBox
@@ -54,10 +54,11 @@
             android:text="Availability" />
 
         <ImageView
-            android:id="@+id/image_view"
+            android:id="@+id/player_profile"
             android:layout_width="151dp"
             android:layout_height="129dp"
             android:foregroundGravity="center_vertical|center|center_horizontal"
+            android:onClick="selectPicture"
             app:srcCompat="@drawable/user"
             tools:srcCompat="@drawable/user" />
 
@@ -70,8 +71,8 @@
         android:layout_margin="10dp"
         android:layout_marginBottom="80dp"
         android:layout_weight="1"
-        android:onClick="addPlayer"
-        android:text="Añadir"
+        android:onClick="addOrModifyPlayer"
+        android:text="ADD"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.39"
