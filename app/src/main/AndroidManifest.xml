@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EnjoyPadel">
         <activity
+            android:name=".acitivities.MatchDetail"
+            android:exported="false" />
+        <activity
             android:name=".acitivities.CalendarActivity"
             android:exported="false" />
         <activity

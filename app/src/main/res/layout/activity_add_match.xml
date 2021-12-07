@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:padding="15dp"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp">
 
@@ -19,7 +20,6 @@
             android:layout_height="45dp"
             android:layout_marginTop="15dp"
             android:background="@null"
-            android:capitalize="sentences"
             android:ems="10"
             android:hint="Enter the tournament round"
             android:inputType="textCapSentences"
@@ -34,11 +34,11 @@
             android:background="?android:attr/listDivider" />
 
         <TextView
-            android:id="@+id/player_one"
+            android:id="@+id/team_one"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginTop="10dp"
-            android:text="PLAYER ONE"
+            android:text="TEAM 1"
             android:textAlignment="center"
             android:textSize="16sp" />
 
@@ -47,17 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginTop="8dp"
-            android:spinnerMode="dialog"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-        <TextView
-            android:id="@+id/player_two"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="10dp"
-            android:text="PLAYER TWO"
-            android:textAlignment="center"
-            android:textSize="16sp" />
+            android:spinnerMode="dialog" />
 
         <Spinner
             android:id="@+id/spinner_two"
@@ -66,12 +56,20 @@
             android:layout_marginTop="8dp"
             android:spinnerMode="dialog" />
 
+        <View
+            android:id="@+id/divider6"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="?android:attr/listDivider" />
+
         <TextView
-            android:id="@+id/player_three"
+            android:id="@+id/team_two"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginTop="10dp"
-            android:text="PLAYER THREE"
+            android:text="TEAM 2"
             android:textAlignment="center"
             android:textSize="16sp" />
 
@@ -82,20 +80,12 @@
             android:layout_marginTop="8dp"
             android:spinnerMode="dialog" />
 
-        <TextView
-            android:id="@+id/player_four"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="10dp"
-            android:text="PLAYER FOUR"
-            android:textAlignment="center"
-            android:textSize="16sp" />
-
         <Spinner
             android:id="@+id/spinner_four"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="45dp"
             android:layout_marginTop="8dp"
+            android:background="@null"
             android:spinnerMode="dialog" />
 
         <View
@@ -106,26 +96,17 @@
             android:layout_marginBottom="15dp"
             android:background="?android:attr/listDivider" />
 
-        <LinearLayout
+        <EditText
+            android:id="@+id/match_date"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/date"
-                android:layout_width="50dp"
-                android:layout_height="45dp"
-                android:layout_weight="1"
-                android:hint="Date of the match"
-                android:textSize="18sp" />
-
-            <Button
-                android:id="@+id/calendar_button"
-                android:layout_width="150dp"
-                android:layout_height="45dp"
-                android:text="Select" />
-
-        </LinearLayout>
+            android:layout_height="45dp"
+            android:background="@null"
+            android:clickable="true"
+            android:focusable="false"
+            android:hint="Date of the match"
+            android:inputType="date"
+            android:maxLines="1"
+            android:onClick="clickDate" />
 
         <View
             android:id="@+id/divider2"
@@ -140,7 +121,6 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:background="@null"
-            android:capitalize="sentences"
             android:ems="10"
             android:hint="Match duration"
             android:inputType="number"
@@ -169,13 +149,13 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="5dp"
             android:background="?android:attr/listDivider" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/add_match_button"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:onClick="createMatch"
             android:text="Create a match" />
 

@@ -4,21 +4,23 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.svalero.enjoypadel.R;
 import com.svalero.enjoypadel.database.AppDatabase;
 import com.svalero.enjoypadel.domain.Match;
 import com.svalero.enjoypadel.domain.Player;
+import com.svalero.enjoypadel.utils.DatePickerFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,8 +36,7 @@ public class AddMatchActivity extends AppCompatActivity {
     private String playerThree;
     private String playerFour;
     private List<Player> players;
-    private TextView date;
-    private Button btnGoCalendar;
+    private EditText date;
     private EditText round;
     private EditText duration;
     private EditText matchScore;
@@ -98,23 +99,23 @@ public class AddMatchActivity extends AppCompatActivity {
             }
         });
 
+        Intent intent = getIntent();
         round = findViewById(R.id.round);
         duration = findViewById(R.id.duration);
-        date = findViewById(R.id.date);
         matchScore = findViewById(R.id.match_score);
-        btnGoCalendar = findViewById(R.id.calendar_button);
-        btnGoCalendar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AddMatchActivity.this, CalendarActivity.class);
-                intent.putExtra("round", round.toString());
-                startActivity(intent);
-            }
-        });
-        // Parametros que vienen de CalendarActivity
-        Intent intentImput = getIntent();
-        String dateString = intentImput.getStringExtra("date");
-        date.setText(dateString);
+        date = findViewById(R.id.match_date);
+        round.setText(intent.getStringExtra("round"));
+        matchScore.setText(intent.getStringExtra("matchScore"));
+        date.setText(intent.getStringExtra("date"));
+        if (intent.getIntExtra("duration", 0) == 0){
+            duration.setText("");
+        } else {
+            duration.setText(String.valueOf(intent.getIntExtra("duration", 0)));
+        }
+        if (intent.getIntExtra("modify", 0) == 1) {
+            Button modifyBtn = findViewById(R.id.add_match_button);
+            modifyBtn.setText("Modify the match");
+        }
     }
 
     public void createMatch(View view) {
@@ -140,8 +141,7 @@ public class AddMatchActivity extends AppCompatActivity {
                                         match.setDuration(0);
                                     } else {
                                         match.setDuration(Integer.parseInt(duration.getText().toString()));
-                                    }
-                                    ;
+                                    };
                                     match.setPlayerOne(playerOne);
                                     match.setPlayerTwo(playerTwo);
                                     match.setPlayerThree(playerThree);
@@ -161,8 +161,7 @@ public class AddMatchActivity extends AppCompatActivity {
                                     match.setDuration(0);
                                 } else {
                                     match.setDuration(Integer.parseInt(duration.getText().toString()));
-                                }
-                                ;
+                                };
                                 match.setPlayerOne(playerOne);
                                 match.setPlayerTwo(playerTwo);
                                 match.setPlayerThree(playerThree);
@@ -175,5 +174,24 @@ public class AddMatchActivity extends AppCompatActivity {
                 ).setNegativeButton("No",
                 (dialog, which) -> dialog.dismiss());
         builder.create().show();
+    }
+
+    public void clickDate(View view){
+        switch (view.getId()) {
+            case R.id.match_date:
+                showDatePickerDialog();
+                break;
+        }
+    }
+
+    private void showDatePickerDialog() {
+        DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                final String selectedDate = day + " / " + (month+1) + " / " + year;
+                date.setText(selectedDate);
+            }
+        });
+        newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 }

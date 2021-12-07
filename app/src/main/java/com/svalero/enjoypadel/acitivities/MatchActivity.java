@@ -26,7 +26,7 @@ import com.svalero.enjoypadel.domain.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MatchActivity extends AppCompatActivity {
+public class MatchActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private List<Match> matches;
     private ArrayAdapter<Match> matchesAdapter;
@@ -41,6 +41,8 @@ public class MatchActivity extends AppCompatActivity {
         matchesAdapter = new ArrayAdapter<Match>(this, android.R.layout.simple_list_item_1, matches);
         lvMatches.setAdapter(matchesAdapter);
         registerForContextMenu(lvMatches);
+
+        lvMatches.setOnItemClickListener(this);
     }
 
     @Override
@@ -109,15 +111,28 @@ public class MatchActivity extends AppCompatActivity {
                 intent.putExtra("duration", match.getDuration());
                 intent.putExtra("date", match.getDate());
                 intent.putExtra("matchScore", match.getMatchScore());
-                intent.putExtra("playerOne", match.getPlayerOne());
-                intent.putExtra("playerTwo", match.getPlayerTwo());
-                intent.putExtra("playerThree", match.getPlayerThree());
-                intent.putExtra("playerFour", match.getPlayerFour());
                 intent.putExtra("matchId", match.getId());
                 intent.putExtra("modify", 1);
                 startActivity(intent);
                 return true;
         }
         return super.onContextItemSelected(item);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Match match = matches.get(position);
+
+        Intent intentDetail = new Intent(MatchActivity.this, MatchDetail.class);
+        intentDetail.putExtra("round", match.getRound());
+        intentDetail.putExtra("duration", match.getDuration());
+        intentDetail.putExtra("date", match.getDate());
+        intentDetail.putExtra("matchScore", match.getMatchScore());
+        intentDetail.putExtra("matchId", match.getId());
+        intentDetail.putExtra("playerOne", match.getPlayerOne());
+        intentDetail.putExtra("playerTwo", match.getPlayerTwo());
+        intentDetail.putExtra("playerThree", match.getPlayerThree());
+        intentDetail.putExtra("playerFour", match.getPlayerFour());
+        startActivity(intentDetail);
     }
 }

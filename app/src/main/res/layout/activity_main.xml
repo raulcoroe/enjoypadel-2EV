@@ -35,22 +35,6 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/teams_button"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="30dp"
-            android:layout_weight="1"
-            android:background="@drawable/round_button"
-            android:drawableBottom="@mipmap/ic_launcher_team"
-            android:fontFamily="@font/audiowide"
-            android:text="TEAMS"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="34sp"
-            android:textStyle="bold" />
-
-        <Button
             android:id="@+id/matches_button"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
@@ -64,6 +48,22 @@
             android:fontFamily="@font/audiowide"
             android:onClick="selectMatches"
             android:text="MATCHES"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="34sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/locations_button"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/round_button"
+            android:drawableBottom="@android:drawable/ic_menu_mapmode"
+            android:fontFamily="@font/audiowide"
+            android:text="LOCATIONS"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="34sp"

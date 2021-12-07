@@ -118,7 +118,7 @@ public class Match {
 
     @Override
     public String toString() {
-        return "Round: " + round + " -> id: " + id;
+        return "Match: "+ id + " - Round: " + round;
     }
 }
 
