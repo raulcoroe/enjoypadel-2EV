@@ -22,4 +22,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, PlayerActivity.class);
         startActivity(intent);
     }
+
+    public void selectMatches(View view){
+        Intent intent = new Intent(this, MatchActivity.class);
+        startActivity(intent);
+    }
 }

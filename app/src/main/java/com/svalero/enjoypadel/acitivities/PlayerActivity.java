@@ -48,7 +48,7 @@ public class PlayerActivity extends AppCompatActivity {
 
         players.clear();
         AppDatabase db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "players").allowMainThreadQueries()
+                AppDatabase.class, "tournament").allowMainThreadQueries()
                 .fallbackToDestructiveMigration().build();
 
         SharedPreferences preferencias = PreferenceManager.getDefaultSharedPreferences(this);
@@ -103,7 +103,7 @@ public class PlayerActivity extends AppCompatActivity {
         boolean removeDelete = preferencias.getBoolean("restrict", false);
 
         if (!removeDelete)
-        getMenuInflater().inflate(R.menu.player_contextual_menu, menu);
+        getMenuInflater().inflate(R.menu.contextual_menu, menu);
     }
 
 
@@ -119,7 +119,7 @@ public class PlayerActivity extends AppCompatActivity {
                         .setPositiveButton("Si",
                                 (dialog, which) -> {
                                     AppDatabase db = Room.databaseBuilder(getApplicationContext(),
-                                            AppDatabase.class, "players").allowMainThreadQueries()
+                                            AppDatabase.class, "tournament").allowMainThreadQueries()
                                             .fallbackToDestructiveMigration().build();
                                     db.playerDao().delete(player);
                                     players.remove(player);

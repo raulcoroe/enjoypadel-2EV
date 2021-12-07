@@ -62,6 +62,7 @@
             android:bottomRightRadius="10dp"
             android:drawableBottom="@mipmap/ic_launcher_match"
             android:fontFamily="@font/audiowide"
+            android:onClick="selectMatches"
             android:text="MATCHES"
             android:textAlignment="center"
             android:textColor="@color/black"

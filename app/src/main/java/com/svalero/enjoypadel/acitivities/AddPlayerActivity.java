@@ -89,7 +89,7 @@ public class AddPlayerActivity extends AppCompatActivity {
         byte[] playerImage = ImageUtils.fromImageViewToByteArray(playerImageView);
 
         AppDatabase db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "players").allowMainThreadQueries().build();
+                AppDatabase.class, "tournament").allowMainThreadQueries().build();
 
         // Comprueba si hay que anadir o modificar
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
