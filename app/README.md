@@ -8,6 +8,7 @@
 #### Podemos añadir, modificar, eliminar y consultar los partidos.
 #### En el partido podemos añadir los jugadoes que previamente han sido añadidos
 #### En el partido podemos añadir los centros dpeortivos que previamente han sido añadidos
+#### Permite añadir la fecha del partido mediante un fragment de calendario
 ### - Apartado CENTROS DEPORTIVOS
 #### Podemos añadir, modificar y consultar los centros deportivos
 #### Podermos añadir la ubicación del centro en un mapa de google maps
