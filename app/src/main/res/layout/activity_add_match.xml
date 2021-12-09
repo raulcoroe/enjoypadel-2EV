@@ -6,159 +6,184 @@
     android:layout_height="match_parent"
     tools:context=".acitivities.AddMatchActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="15dp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp">
+        android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/round"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="15dp"
-            android:background="@null"
-            android:ems="10"
-            android:hint="Enter the tournament round"
-            android:inputType="textCapSentences"
-            android:textSize="18sp" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp">
 
-        <View
-            android:id="@+id/divider3"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:background="?android:attr/listDivider" />
+            <EditText
+                android:id="@+id/round"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="15dp"
+                android:background="@null"
+                android:ems="10"
+                android:hint="Enter the tournament round"
+                android:inputType="textCapSentences"
+                android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/team_one"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="10dp"
-            android:text="TEAM 1"
-            android:textAlignment="center"
-            android:textSize="16sp" />
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:background="?android:attr/listDivider" />
 
-        <Spinner
-            android:id="@+id/spinner_one"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginTop="8dp"
-            android:spinnerMode="dialog" />
+            <TextView
+                android:id="@+id/team_one"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:text="TEAM 1"
+                android:textAlignment="center"
+                android:textSize="16sp" />
 
-        <Spinner
-            android:id="@+id/spinner_two"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginTop="8dp"
-            android:spinnerMode="dialog" />
+            <Spinner
+                android:id="@+id/spinner_one"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="8dp"
+                android:spinnerMode="dialog" />
 
-        <View
-            android:id="@+id/divider6"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:background="?android:attr/listDivider" />
+            <Spinner
+                android:id="@+id/spinner_two"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="8dp"
+                android:spinnerMode="dialog" />
 
-        <TextView
-            android:id="@+id/team_two"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="10dp"
-            android:text="TEAM 2"
-            android:textAlignment="center"
-            android:textSize="16sp" />
+            <View
+                android:id="@+id/divider6"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:background="?android:attr/listDivider" />
 
-        <Spinner
-            android:id="@+id/spinner_three"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginTop="8dp"
-            android:spinnerMode="dialog" />
+            <TextView
+                android:id="@+id/team_two"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:text="TEAM 2"
+                android:textAlignment="center"
+                android:textSize="16sp" />
 
-        <Spinner
-            android:id="@+id/spinner_four"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="8dp"
-            android:background="@null"
-            android:spinnerMode="dialog" />
+            <Spinner
+                android:id="@+id/spinner_three"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="8dp"
+                android:spinnerMode="dialog" />
 
-        <View
-            android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:background="?android:attr/listDivider" />
+            <Spinner
+                android:id="@+id/spinner_four"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="8dp"
+                android:spinnerMode="dialog" />
 
-        <EditText
-            android:id="@+id/match_date"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@null"
-            android:clickable="true"
-            android:focusable="false"
-            android:hint="Date of the match"
-            android:inputType="date"
-            android:maxLines="1"
-            android:onClick="clickDate" />
+            <View
+                android:id="@+id/divider12"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:background="?android:attr/listDivider" />
 
-        <View
-            android:id="@+id/divider2"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:background="?android:attr/listDivider" />
+            <TextView
+                android:id="@+id/match_center"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="LOCATION"
+                android:textAlignment="center"
+                android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/duration"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@null"
-            android:ems="10"
-            android:hint="Match duration"
-            android:inputType="number"
-            android:textSize="18sp" />
+            <Spinner
+                android:id="@+id/spinner_location"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="8dp"
+                android:spinnerMode="dialog" />
 
-        <View
-            android:id="@+id/divider4"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:background="?android:attr/listDivider" />
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:background="?android:attr/listDivider" />
 
-        <EditText
-            android:id="@+id/match_score"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@null"
-            android:ems="10"
-            android:hint="Match score"
-            android:inputType="textPersonName"
-            android:textSize="18sp" />
+            <EditText
+                android:id="@+id/match_date"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@null"
+                android:clickable="true"
+                android:focusable="false"
+                android:hint="Date of the match"
+                android:inputType="date"
+                android:maxLines="1"
+                android:onClick="clickDate" />
 
-        <View
-            android:id="@+id/divider5"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="5dp"
-            android:background="?android:attr/listDivider" />
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:background="?android:attr/listDivider" />
 
-        <Button
-            android:id="@+id/add_match_button"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:onClick="createMatch"
-            android:text="Create a match" />
+            <EditText
+                android:id="@+id/duration"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@null"
+                android:ems="10"
+                android:hint="Match duration"
+                android:inputType="number"
+                android:textSize="18sp" />
 
-    </LinearLayout>
+            <View
+                android:id="@+id/divider4"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:background="?android:attr/listDivider" />
+
+            <EditText
+                android:id="@+id/match_score"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@null"
+                android:ems="10"
+                android:hint="Match score"
+                android:inputType="textPersonName"
+                android:textSize="18sp" />
+
+            <View
+                android:id="@+id/divider5"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:background="?android:attr/listDivider" />
+
+            <Button
+                android:id="@+id/add_match_button"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:onClick="createMatch"
+                android:text="Create a match" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,4 +27,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MatchActivity.class);
         startActivity(intent);
     }
+
+    public void selectLocations(View view){
+        Intent intent = new Intent(this, SportCenterActivity.class);
+        startActivity(intent);
+    }
 }

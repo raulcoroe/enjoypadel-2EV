@@ -63,6 +63,7 @@
             android:background="@drawable/round_button"
             android:drawableBottom="@android:drawable/ic_menu_mapmode"
             android:fontFamily="@font/audiowide"
+            android:onClick="selectLocations"
             android:text="LOCATIONS"
             android:textAlignment="center"
             android:textColor="@color/black"

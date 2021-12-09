@@ -29,17 +29,9 @@ public class Match {
     private String playerThree;
     @ColumnInfo
     private String playerFour;
+    @ColumnInfo
+    private String sportCenter;
 
-    public Match(String round, int duration, String date, String matchScore, String playerOne, String playerTwo, String playerThree, String playerFour) {
-        this.round = round;
-        this.duration = duration;
-        this.date = date;
-        this.matchScore = matchScore;
-        this.playerOne = playerOne;
-        this.playerTwo = playerTwo;
-        this.playerThree = playerThree;
-        this.playerFour = playerFour;
-    }
 
     public Match() {
     }
@@ -114,6 +106,14 @@ public class Match {
 
     public void setPlayerFour(String playerFour) {
         this.playerFour = playerFour;
+    }
+
+    public String getSportCenter() {
+        return sportCenter;
+    }
+
+    public void setSportCenter(String sportCenter) {
+        this.sportCenter = sportCenter;
     }
 
     @Override

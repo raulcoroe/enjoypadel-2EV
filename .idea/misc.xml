@@ -9,21 +9,28 @@
         <entry key="..\:/Users/r_mar/AndroidStudioProjects/EnjoyPadel/app/src/main/res/drawable/round_button.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/r_mar/AndroidStudioProjects/EnjoyPadel/app/src/main/res/font/amita.xml" value="0.30364583333333334" />
         <entry key="..\:/Users/r_mar/AndroidStudioProjects/EnjoyPadel/app/src/main/res/font/audiowide.xml" value="0.30364583333333334" />
+        <entry key="..\:/Users/r_mar/AndroidStudioProjects/EnjoyPadel/app/src/main/res/layout/activity_add_center.xml" value="0.16153846153846155" />
         <entry key="..\:/Users/r_mar/AndroidStudioProjects/EnjoyPadel/app/src/main/res/layout/activity_add_match.xml" value="0.2086956590966153" />
         <entry key="..\:/Users/r_mar/AndroidStudioProjects/EnjoyPadel/app/src/main/res/layout/activity_add_player.xml" value="0.2754782700075322" />
         <entry key="..\:/Users/r_mar/AndroidStudioProjects/EnjoyPadel/app/src/main/res/layout/activity_calendar.xml" value="0.22435897435897437" />
+        <entry key="..\:/Users/r_mar/AndroidStudioProjects/EnjoyPadel/app/src/main/res/layout/activity_center_detail.xml" value="0.2346014492753623" />
+        <entry key="..\:/Users/r_mar/AndroidStudioProjects/EnjoyPadel/app/src/main/res/layout/activity_location.xml" value="0.22435897435897437" />
         <entry key="..\:/Users/r_mar/AndroidStudioProjects/EnjoyPadel/app/src/main/res/layout/activity_main.xml" value="0.18365218000502148" />
         <entry key="..\:/Users/r_mar/AndroidStudioProjects/EnjoyPadel/app/src/main/res/layout/activity_match.xml" value="0.22435897435897437" />
         <entry key="..\:/Users/r_mar/AndroidStudioProjects/EnjoyPadel/app/src/main/res/layout/activity_match_detail.xml" value="0.2086956590966153" />
         <entry key="..\:/Users/r_mar/AndroidStudioProjects/EnjoyPadel/app/src/main/res/layout/activity_player.xml" value="0.2086956590966153" />
         <entry key="..\:/Users/r_mar/AndroidStudioProjects/EnjoyPadel/app/src/main/res/layout/activity_player2.xml" value="0.1170940170940171" />
+        <entry key="..\:/Users/r_mar/AndroidStudioProjects/EnjoyPadel/app/src/main/res/layout/activity_sport_center.xml" value="0.18076923076923077" />
         <entry key="..\:/Users/r_mar/AndroidStudioProjects/EnjoyPadel/app/src/main/res/layout/content_player.xml" value="0.12521739545796917" />
         <entry key="..\:/Users/r_mar/AndroidStudioProjects/EnjoyPadel/app/src/main/res/layout/fila.xml" value="0.14191304818569841" />
         <entry key="..\:/Users/r_mar/AndroidStudioProjects/EnjoyPadel/app/src/main/res/layout/preferences.xml" value="0.10726495726495726" />
         <entry key="..\:/Users/r_mar/AndroidStudioProjects/EnjoyPadel/app/src/main/res/layout/preferencies.xml" value="0.17527173913043478" />
+        <entry key="..\:/Users/r_mar/AndroidStudioProjects/EnjoyPadel/app/src/main/res/menu/add_center_actionbar.xml" value="0.18076923076923077" />
         <entry key="..\:/Users/r_mar/AndroidStudioProjects/EnjoyPadel/app/src/main/res/menu/add_match_actionbar.xml" value="0.22435897435897437" />
         <entry key="..\:/Users/r_mar/AndroidStudioProjects/EnjoyPadel/app/src/main/res/menu/add_player.xml" value="0.22435897435897437" />
         <entry key="..\:/Users/r_mar/AndroidStudioProjects/EnjoyPadel/app/src/main/res/menu/add_player_actionbar.xml" value="0.12094017094017094" />
+        <entry key="..\:/Users/r_mar/AndroidStudioProjects/EnjoyPadel/app/src/main/res/menu/center_contextual_menu.xml" value="0.22435897435897437" />
+        <entry key="..\:/Users/r_mar/AndroidStudioProjects/EnjoyPadel/app/src/main/res/menu/contextual_menu.xml" value="0.22435897435897437" />
         <entry key="..\:/Users/r_mar/AndroidStudioProjects/EnjoyPadel/app/src/main/res/menu/player_contextual_menu.xml" value="0.22435897435897437" />
         <entry key="..\:/Users/r_mar/AndroidStudioProjects/EnjoyPadel/app/src/main/res/menu/preferences_actionbar..xml" value="0.12222222222222222" />
         <entry key="..\:/Users/r_mar/AndroidStudioProjects/EnjoyPadel/app/src/main/res/menu/preferences_actionbar.xml" value="0.12222222222222222" />

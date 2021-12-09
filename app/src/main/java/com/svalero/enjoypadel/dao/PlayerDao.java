@@ -17,9 +17,6 @@ public interface PlayerDao {
     @Query("SELECT * FROM player")
     List<Player> getAll();
 
-    @Query("SELECT * FROM player WHERE id = :id")
-    Player findById(int id);
-
     @Insert
     void insert(Player player);
 
@@ -28,6 +25,9 @@ public interface PlayerDao {
 
     @Delete
     void delete(Player player);
+
+    @Query("SELECT * FROM player WHERE id = :id")
+    Player findById(int id);
 
     @Query("SELECT * FROM player WHERE availability = 1")
     List<Player> getAvailablePlayers();

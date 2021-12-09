@@ -20,6 +20,7 @@ import com.svalero.enjoypadel.R;
 import com.svalero.enjoypadel.database.AppDatabase;
 import com.svalero.enjoypadel.domain.Match;
 import com.svalero.enjoypadel.domain.Player;
+import com.svalero.enjoypadel.domain.SportCenter;
 import com.svalero.enjoypadel.utils.DatePickerFragment;
 
 import java.util.ArrayList;
@@ -31,11 +32,14 @@ public class AddMatchActivity extends AppCompatActivity {
     private Spinner spinnerTwo;
     private Spinner spinnerThree;
     private Spinner spinnerFour;
+    private Spinner spinnerLocation;
     private String playerOne;
     private String playerTwo;
     private String playerThree;
     private String playerFour;
+    private String location;
     private List<Player> players;
+    private List<SportCenter> centers;
     private EditText date;
     private EditText round;
     private EditText duration;
@@ -50,18 +54,22 @@ public class AddMatchActivity extends AppCompatActivity {
         spinnerTwo = findViewById(R.id.spinner_two);
         spinnerThree = findViewById(R.id.spinner_three);
         spinnerFour = findViewById(R.id.spinner_four);
+        spinnerLocation = findViewById(R.id.spinner_location);
 
         AppDatabase db = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class, "tournament").allowMainThreadQueries()
                 .fallbackToDestructiveMigration().build();
-        players = new ArrayList<>();
         players = db.playerDao().getAll();
+        centers = db.sportCenterDao().getAll();
 
         ArrayAdapter adp = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, players);
+        ArrayAdapter adpCenter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, centers);
         spinnerOne.setAdapter(adp);
         spinnerTwo.setAdapter(adp);
         spinnerThree.setAdapter(adp);
         spinnerFour.setAdapter(adp);
+        spinnerLocation.setAdapter(adpCenter);
+
 
         spinnerOne.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
@@ -96,6 +104,18 @@ public class AddMatchActivity extends AppCompatActivity {
             }
 
             public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        spinnerLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                location = spinnerLocation.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
 
@@ -146,6 +166,7 @@ public class AddMatchActivity extends AppCompatActivity {
                                     match.setPlayerTwo(playerTwo);
                                     match.setPlayerThree(playerThree);
                                     match.setPlayerFour(playerFour);
+                                    match.setSportCenter(location);
 
                                     db.matchDao().insert(match);
                                     Toast.makeText(this, "Match " + match.getId() + " added", Toast.LENGTH_SHORT).show();
@@ -166,6 +187,7 @@ public class AddMatchActivity extends AppCompatActivity {
                                 match.setPlayerTwo(playerTwo);
                                 match.setPlayerThree(playerThree);
                                 match.setPlayerFour(playerFour);
+                                match.setSportCenter(location);
                                 db.matchDao().update(match);
                                 Toast.makeText(this, "Match " + match.getId() + " modified", Toast.LENGTH_SHORT).show();
                                 finish();

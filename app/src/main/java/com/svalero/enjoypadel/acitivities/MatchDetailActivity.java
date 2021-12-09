@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.svalero.enjoypadel.R;
 
-public class MatchDetail extends AppCompatActivity {
+public class MatchDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +24,7 @@ public class MatchDetail extends AppCompatActivity {
         String date = intent.getStringExtra("date");
         String duration = String.valueOf(intent.getIntExtra("duration", 0));
         String score = intent.getStringExtra("matchScore");
+        String location = intent.getStringExtra("location");
 
         TextView roundTv = findViewById(R.id.round_view);
         TextView playerOneTv = findViewById(R.id.team_one_player_one);
@@ -33,6 +34,7 @@ public class MatchDetail extends AppCompatActivity {
         TextView dateTv = findViewById(R.id.date_view);
         TextView durationTv = findViewById(R.id.duration_view);
         TextView scoreTv = findViewById(R.id.score_view);
+        TextView locationTv = findViewById(R.id.location_view);
 
         roundTv.setText(round);
         playerOneTv.setText(playerOne);
@@ -42,6 +44,7 @@ public class MatchDetail extends AppCompatActivity {
         dateTv.setText(date);
         durationTv.setText(duration);
         scoreTv.setText(score);
+        locationTv.setText(location);
 
     }
 }
