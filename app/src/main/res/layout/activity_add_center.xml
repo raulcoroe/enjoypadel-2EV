@@ -18,7 +18,7 @@
             android:layout_height="45dp"
             android:layout_marginTop="15dp"
             android:ems="10"
-            android:hint="Sport center name"
+            android:hint="@string/sport_center_name"
             android:inputType="textPersonName|textCapSentences"
             android:textSize="18sp" />
 
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:onClick="addCenter"
-            android:text="Add sport center" />
+            android:text="@string/add_sport_center" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

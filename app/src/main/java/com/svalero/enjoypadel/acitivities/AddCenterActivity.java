@@ -57,7 +57,7 @@ public class AddCenterActivity extends AppCompatActivity implements OnMapReadyCa
         TextView nameCenterTv = findViewById(R.id.center_name);
         map.addMarker(new MarkerOptions()
                 .position(latLng)
-                .snippet("Sport center location")
+                .snippet(getString(R.string.smipper_text))
                 .title(nameCenterTv.getText().toString()));
     }
 
@@ -66,7 +66,7 @@ public class AddCenterActivity extends AppCompatActivity implements OnMapReadyCa
         SportCenter center = new SportCenter();
 
         if (nameCenterTv.getText().toString().equals("")){
-            Toast.makeText(this, "You must enter the name of the sport center", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.must_center_name, Toast.LENGTH_SHORT).show();
         } else {
             AppDatabase db = Room.databaseBuilder(getApplicationContext(),
                     AppDatabase.class, "tournament").allowMainThreadQueries()

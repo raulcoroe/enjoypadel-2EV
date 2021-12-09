@@ -2,12 +2,9 @@ package com.svalero.enjoypadel.domain;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.List;
+import com.svalero.enjoypadel.R;
 
 @Entity
 public class Match {
@@ -118,7 +115,7 @@ public class Match {
 
     @Override
     public String toString() {
-        return "Match: "+ id + " - Round: " + round;
+        return "Partido: " + id + " - Ronda: " + round;
     }
 }
 

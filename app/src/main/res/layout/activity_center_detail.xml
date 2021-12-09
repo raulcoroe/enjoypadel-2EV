@@ -18,7 +18,7 @@
             android:layout_height="45dp"
             android:layout_marginTop="15dp"
             android:ems="10"
-            android:hint="Sport center name"
+            android:hint="@string/sport_center_name"
             android:inputType="textPersonName|textCapSentences"
             android:textSize="18sp" />
 

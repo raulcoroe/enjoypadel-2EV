@@ -79,9 +79,9 @@ public class PlayerAdapter  extends BaseAdapter {
         holder.surname.setText(player.getSurname());
         holder.level.setText(player.getLevel());
         if (player.isAvailability() == true) {
-            holder.availability.setText("Available");
+            holder.availability.setText(R.string.available);
         } else {
-            holder.availability.setText("Not available");
+            holder.availability.setText(R.string.not_available);
         }
         return convertView;
     }

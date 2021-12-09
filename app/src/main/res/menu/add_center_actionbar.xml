@@ -5,6 +5,6 @@
     <item
         android:id="@+id/add_center"
         android:icon="@android:drawable/ic_input_add"
-        android:title="Add Center"
+        android:title="@string/add_center"
         app:showAsAction="always" />
 </menu>

@@ -21,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginTop="15dp"
-                android:hint="Round"
+                android:hint="@string/round"
                 android:textSize="18dp" />
 
             <View
@@ -36,21 +36,21 @@
                 android:id="@+id/team_one_view"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:text="TEAM 1"
+                android:text="@string/team_1"
                 android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/team_one_player_one"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:hint="Player one"
+                android:hint="@string/player_one"
                 android:textSize="18dp" />
 
             <TextView
                 android:id="@+id/team_one_player_two"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:hint="Player two"
+                android:hint="@string/player_two"
                 android:textSize="18dp" />
 
             <View
@@ -65,21 +65,21 @@
                 android:id="@+id/team_two_view"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:text="TEAM 2"
+                android:text="@string/team_2"
                 android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/team_two_player_one"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:hint="Player one"
+                android:hint="@string/player_one"
                 android:textSize="18dp" />
 
             <TextView
                 android:id="@+id/team_two_player_two"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:hint="Player two"
+                android:hint="@string/player_two"
                 android:textSize="18dp" />
 
             <View
@@ -94,7 +94,7 @@
                 android:id="@+id/location_view"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:hint="Location"
+                android:hint="@string/locationTv"
                 android:textSize="18dp" />
 
             <View
@@ -109,7 +109,7 @@
                 android:id="@+id/date_view"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:hint="Date"
+                android:hint="@string/date"
                 android:textSize="18dp" />
 
             <View
@@ -124,7 +124,7 @@
                 android:id="@+id/duration_view"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:hint="Duration"
+                android:hint="@string/duration"
                 android:textSize="18dp" />
 
             <View
@@ -139,7 +139,7 @@
                 android:id="@+id/score_view"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:hint="Score"
+                android:hint="@string/score"
                 android:textSize="18dp" />
         </LinearLayout>
     </ScrollView>

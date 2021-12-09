@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#303030"
+    android:clipToPadding="false"
+    tools:context=".acitivities.MainActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/players_button"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                android:background="@drawable/round_button"
+                android:drawableBottom="@mipmap/ic_launcher_player"
+                android:fontFamily="@font/audiowide"
+                android:onClick="selectPlayers"
+                android:text="@string/players"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="34sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/matches_button"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                android:background="@drawable/round_button"
+                android:bottomLeftRadius="10dp"
+                android:bottomRightRadius="10dp"
+                android:drawableBottom="@mipmap/ic_launcher_match"
+                android:fontFamily="@font/audiowide"
+                android:onClick="selectMatches"
+                android:text="@string/matches"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="34sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/center_button"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                android:background="@drawable/round_button"
+                android:bottomLeftRadius="10dp"
+                android:bottomRightRadius="10dp"
+                android:drawableBottom="@mipmap/ic_launcher_sport_center"
+                android:fontFamily="@font/audiowide"
+                android:onClick="selectLocations"
+                android:text="@string/centers"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="34sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

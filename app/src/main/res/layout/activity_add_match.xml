@@ -23,7 +23,7 @@
                 android:layout_marginTop="15dp"
                 android:background="@null"
                 android:ems="10"
-                android:hint="Enter the tournament round"
+                android:hint="@string/enter_the_tournament_round"
                 android:inputType="textCapSentences"
                 android:textSize="18sp" />
 
@@ -40,7 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_marginTop="10dp"
-                android:text="TEAM 1"
+                android:text="@string/team_1"
                 android:textAlignment="center"
                 android:textSize="16sp" />
 
@@ -71,7 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_marginTop="10dp"
-                android:text="TEAM 2"
+                android:text="@string/team_2"
                 android:textAlignment="center"
                 android:textSize="16sp" />
 
@@ -101,7 +101,7 @@
                 android:id="@+id/match_center"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:text="LOCATION"
+                android:text="@string/location"
                 android:textAlignment="center"
                 android:textSize="16sp" />
 
@@ -127,7 +127,7 @@
                 android:background="@null"
                 android:clickable="true"
                 android:focusable="false"
-                android:hint="Date of the match"
+                android:hint="@string/date_of_the_match"
                 android:inputType="date"
                 android:maxLines="1"
                 android:onClick="clickDate" />
@@ -146,7 +146,7 @@
                 android:layout_height="45dp"
                 android:background="@null"
                 android:ems="10"
-                android:hint="Match duration"
+                android:hint="@string/match_duration"
                 android:inputType="number"
                 android:textSize="18sp" />
 
@@ -164,7 +164,7 @@
                 android:layout_height="45dp"
                 android:background="@null"
                 android:ems="10"
-                android:hint="Match score"
+                android:hint="@string/match_score"
                 android:inputType="textPersonName"
                 android:textSize="18sp" />
 
@@ -181,7 +181,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:onClick="createMatch"
-                android:text="Create a match" />
+                android:text="@string/create_a_match" />
 
         </LinearLayout>
     </ScrollView>

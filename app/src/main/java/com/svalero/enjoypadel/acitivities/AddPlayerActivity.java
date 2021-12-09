@@ -6,7 +6,6 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.ImageFormat;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -62,7 +61,7 @@ public class AddPlayerActivity extends AppCompatActivity {
         if (intent.getIntExtra("modify", 0) == 1) {
             playerImageView.setImageBitmap(bitmapImage);
             Button button = findViewById(R.id.add_button);
-            button.setText("MODIFY");
+            button.setText(R.string.modify);
         }
     }
 
@@ -76,7 +75,7 @@ public class AddPlayerActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         if (etName.getText().toString().equals("")) {
-            Toast.makeText(this, "You must add the name of a player", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.must_player_name, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -84,7 +83,7 @@ public class AddPlayerActivity extends AppCompatActivity {
         String surname = etSurname.getText().toString();
         String level = etLevel.getText().toString();
         if (level.equals(""))
-            level = "Not specified";
+            level = getString(R.string.not_specified);
         boolean availability = checkAvailability.isChecked();
         byte[] playerImage = ImageUtils.fromImageViewToByteArray(playerImageView);
 
@@ -94,14 +93,14 @@ public class AddPlayerActivity extends AppCompatActivity {
         // Comprueba si hay que anadir o modificar
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         String finalLevel = level;
-        builder.setMessage("Are you sure?")
-                .setPositiveButton("Si",
+        builder.setMessage(R.string.sure)
+                .setPositiveButton(R.string.yes,
                         (dialog, which) -> {
                             if (intent.getIntExtra("modify", 0) == 0) {
                                 Player player = new Player(name, surname, finalLevel, availability, playerImage);
                                 db.playerDao().insert(player);
                                 finish();
-                                Toast.makeText(this, "Player " + name + " added", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(this, getString(R.string.player_added, name),Toast.LENGTH_SHORT).show();
 
                             } else {
                                 Player player = db.playerDao().findById(intent.getIntExtra("playerId", 0));
@@ -112,10 +111,10 @@ public class AddPlayerActivity extends AppCompatActivity {
                                 player.setImage(playerImage);
                                 db.playerDao().update(player);
                                 finish();
-                                Toast.makeText(this, "Player " + name + " modified", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(this, getString(R.string.player_modified, name), Toast.LENGTH_SHORT).show();
                             }
                         }
-                ).setNegativeButton("No",
+                ).setNegativeButton(R.string.no,
                 (dialog, which) -> dialog.dismiss());
         builder.create().show();
     }
@@ -123,8 +122,8 @@ public class AddPlayerActivity extends AppCompatActivity {
 
     public void selectPicture(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("What do you want?")
-                .setPositiveButton("Take a photo",
+        builder.setMessage(R.string.dialog_photo)
+                .setPositiveButton(R.string.take_photo,
                         (dialog, which) -> {
                             REQUEST_IMAGE_CAPTURE = 1;
                             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) !=
@@ -138,7 +137,7 @@ public class AddPlayerActivity extends AppCompatActivity {
                                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
                             }
                         })
-                .setNegativeButton("Choose photo",
+                .setNegativeButton(R.string.choose_photo,
                         (dialog, which) -> {
                             SELECT_PICTURE_RESULT = 1;
                             Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);

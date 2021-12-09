@@ -2,22 +2,22 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:widgetLayout="@android:layout/preference_category">
 
-    <PreferenceCategory android:title="Visualizacion">
+    <PreferenceCategory android:title="@string/visualisation">
 
         <SwitchPreference
             android:defaultValue="false"
             android:key="available_players"
-            android:title="View only available players" />
+            android:title="@string/available_players" />
         <SwitchPreference
             android:defaultValue="false"
             android:key="hide_surname"
-            android:title="Hide surname" />
+            android:title="@string/hide" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="Restrictions">
+    <PreferenceCategory android:title="@string/restriction">
 
         <SwitchPreference
             android:defaultValue="false"
             android:key="restrict"
-            android:title="Restrict options to modify and delete" />
+            android:title="@string/restrict_mod_del" />
     </PreferenceCategory>
 </PreferenceScreen>

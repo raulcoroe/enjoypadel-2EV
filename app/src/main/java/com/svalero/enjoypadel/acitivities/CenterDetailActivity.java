@@ -56,7 +56,7 @@ public class CenterDetailActivity extends AppCompatActivity implements OnMapRead
 
         map.addMarker(new MarkerOptions()
                 .position(location)
-                .snippet("Sport center location")
+                .snippet(getString(R.string.smipper_text))
                 .title(name));
     }
 }

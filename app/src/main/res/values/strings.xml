@@ -1,14 +1,65 @@
 <resources>
     <string name="app_name">Enjoy Padel</string>
-    <string name="title_activity_player">PlayerActivity</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="google_maps_key">AIzaSyA9DuscA3BNAypTwbe0Dd9xy-Wf3dVJxqM</string>
+    <string name="smipper_text">Sport center location</string>
+    <string name="must_center_name">You must enter the name of the sport center</string>
+    <string name="modify_match">Modify the match</string>
+    <string name="sure">Are you sure?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="match_modified">Match modified</string>
+    <string name="player_modified">Player %s modified</string>
+    <string name="must_player_name">You must add the name of a player</string>
+    <string name="not_specified">Not specified</string>
+    <string name="player_added">Player %s added</string>
+    <string name="match_added">Match added</string>
+    <string name="must_tournament_round">You must enter the tournament round</string>
+    <string name="dialog_photo">What do you want?</string>
+    <string name="take_photo">Take a photo</string>
+    <string name="choose_photo">Choose photo</string>
+    <string name="modify">MODIFY</string>
+    <string name="available">Available</string>
+    <string name="not_available">Not available</string>
+    <string name="sport_center_name">Sport center name</string>
+    <string name="add_sport_center">Add sport center</string>
+    <string name="enter_the_tournament_round">Enter the tournament round</string>
+    <string name="team_1">TEAM 1</string>
+    <string name="team_2">TEAM 2</string>
+    <string name="location">LOCATION</string>
+    <string name="date_of_the_match">Date of the match</string>
+    <string name="match_duration">Match duration</string>
+    <string name="match_score">Match score</string>
+    <string name="create_a_match">Create a match</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="level">Level</string>
+    <string name="availability">Availability</string>
+    <string name="add">ADD</string>
+    <string name="matches">MATCHES</string>
+    <string name="centers">CENTERS</string>
+    <string name="players">PLAYERS</string>
+    <string name="match_area">Match area</string>
+    <string name="round">Round</string>
+    <string name="player_one">Player one</string>
+    <string name="player_two">Player two</string>
+    <string name="locationTv">Location</string>
+    <string name="date">Date</string>
+    <string name="duration">Duration</string>
+    <string name="score">Score</string>
+    <string name="player_area">Player area</string>
+    <string name="center_area">Center area</string>
+    <string name="add_center">Add Center</string>
+    <string name="item">Item</string>
+    <string name="add_player">Add Player</string>
+    <string name="preferences">Preferences</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="available_players">View only available players</string>
+    <string name="hide">Hide surname</string>
+    <string name="restrict_mod_del">Restrict modify and delete</string>
+    <string name="visualisation">Visualisation</string>
+    <string name="restriction">Restrictions</string>
+
     />
 
 </resources>

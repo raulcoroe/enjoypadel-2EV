@@ -115,8 +115,8 @@ public class PlayerActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_delete:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage("Are you sure?")
-                        .setPositiveButton("Si",
+                builder.setMessage(R.string.sure)
+                        .setPositiveButton(R.string.yes,
                                 (dialog, which) -> {
                                     AppDatabase db = Room.databaseBuilder(getApplicationContext(),
                                             AppDatabase.class, "tournament").allowMainThreadQueries()
@@ -125,7 +125,7 @@ public class PlayerActivity extends AppCompatActivity {
                                     players.remove(player);
                                     playerAdapter.notifyDataSetChanged();
                                 }
-                        ).setNegativeButton("No",
+                        ).setNegativeButton(R.string.no,
                         (dialog, which) -> dialog.dismiss());
                 builder.create().show();
                 return true;

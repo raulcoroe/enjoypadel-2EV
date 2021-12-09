@@ -54,6 +54,6 @@ public class SportCenter {
 
     @Override
     public String toString() {
-        return "SportCenter: " + name;
+        return "Centro deportivo: " + name;
     }
 }

@@ -4,6 +4,6 @@
     <item
         android:id="@+id/add_match"
         android:icon="@android:drawable/ic_input_add"
-        android:title="Item"
+        android:title="@string/item"
         app:showAsAction="always" />
 </menu>

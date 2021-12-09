@@ -84,8 +84,8 @@ public class SportCenterActivity extends AppCompatActivity implements AdapterVie
 
         if (item.getItemId() == R.id.delete_center) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage("Are you sure?")
-                        .setPositiveButton("Si",
+                builder.setMessage(R.string.sure)
+                        .setPositiveButton(R.string.yes,
                                 (dialog, which) -> {
                                     AppDatabase db = Room.databaseBuilder(getApplicationContext(),
                                             AppDatabase.class, "tournament").allowMainThreadQueries()
@@ -94,7 +94,7 @@ public class SportCenterActivity extends AppCompatActivity implements AdapterVie
                                     centers.remove(center);
                                     centerAdapter.notifyDataSetChanged();
                                 }
-                        ).setNegativeButton("No",
+                        ).setNegativeButton(R.string.no,
                         (dialog, which) -> dialog.dismiss());
                 builder.create().show();
                 return true;

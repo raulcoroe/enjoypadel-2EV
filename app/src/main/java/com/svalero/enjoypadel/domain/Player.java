@@ -1,10 +1,10 @@
 package com.svalero.enjoypadel.domain;
 
-import android.graphics.Bitmap;
-
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
+import com.svalero.enjoypadel.R;
 
 @Entity
 public class Player {
@@ -32,10 +32,10 @@ public class Player {
 
     public String availabilityString(boolean availability){
         String result;
-        if (availability == true){
-            result = "AVAILABLE";
+        if (availability){
+            result = "DISPONIBLE";
         } else {
-            result = "NOT AVAILABLE";
+            result = "NO DISPONIBLE";
         }
         return result;
     }
@@ -90,7 +90,7 @@ public class Player {
 
     @Override
     public String toString() {
-        return name + " " + surname + " --> " + availabilityString(this.availability);
+        return name + " " + surname + " - " + availabilityString(this.availability);
     }
 }
 

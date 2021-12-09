@@ -1,20 +1,18 @@
 package com.svalero.enjoypadel.acitivities;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
-
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import com.svalero.enjoypadel.R;
 import com.svalero.enjoypadel.database.AppDatabase;
@@ -23,7 +21,6 @@ import com.svalero.enjoypadel.domain.Player;
 import com.svalero.enjoypadel.domain.SportCenter;
 import com.svalero.enjoypadel.utils.DatePickerFragment;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AddMatchActivity extends AppCompatActivity {
@@ -38,8 +35,6 @@ public class AddMatchActivity extends AppCompatActivity {
     private String playerThree;
     private String playerFour;
     private String location;
-    private List<Player> players;
-    private List<SportCenter> centers;
     private EditText date;
     private EditText round;
     private EditText duration;
@@ -49,6 +44,9 @@ public class AddMatchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_match);
+
+        List<Player> players;
+        List<SportCenter> centers;
 
         spinnerOne = findViewById(R.id.spinner_one);
         spinnerTwo = findViewById(R.id.spinner_two);
@@ -134,7 +132,7 @@ public class AddMatchActivity extends AppCompatActivity {
         }
         if (intent.getIntExtra("modify", 0) == 1) {
             Button modifyBtn = findViewById(R.id.add_match_button);
-            modifyBtn.setText("Modify the match");
+            modifyBtn.setText(R.string.modify_match);
         }
     }
 
@@ -146,13 +144,13 @@ public class AddMatchActivity extends AppCompatActivity {
                 .fallbackToDestructiveMigration().build();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Are you sure?")
-                .setPositiveButton("Si",
+        builder.setMessage(R.string.sure)
+                .setPositiveButton(R.string.yes,
                         (dialog, which) -> {
                             if (intent.getIntExtra("modify", 0) == 0) {
                                 Match match = new Match();
                                 if (round.getText().toString().equals("")) {
-                                    Toast.makeText(AddMatchActivity.this, "You must enter the tournament round", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(AddMatchActivity.this, R.string.must_tournament_round, Toast.LENGTH_SHORT).show();
                                 } else {
                                     match.setRound(round.getText().toString());
                                     match.setDate(date.getText().toString());
@@ -161,7 +159,7 @@ public class AddMatchActivity extends AppCompatActivity {
                                         match.setDuration(0);
                                     } else {
                                         match.setDuration(Integer.parseInt(duration.getText().toString()));
-                                    };
+                                    }
                                     match.setPlayerOne(playerOne);
                                     match.setPlayerTwo(playerTwo);
                                     match.setPlayerThree(playerThree);
@@ -169,7 +167,7 @@ public class AddMatchActivity extends AppCompatActivity {
                                     match.setSportCenter(location);
 
                                     db.matchDao().insert(match);
-                                    Toast.makeText(this, "Match " + match.getId() + " added", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(this, R.string.match_added, Toast.LENGTH_SHORT).show();
                                     finish();
                                 }
 
@@ -182,37 +180,32 @@ public class AddMatchActivity extends AppCompatActivity {
                                     match.setDuration(0);
                                 } else {
                                     match.setDuration(Integer.parseInt(duration.getText().toString()));
-                                };
+                                }
                                 match.setPlayerOne(playerOne);
                                 match.setPlayerTwo(playerTwo);
                                 match.setPlayerThree(playerThree);
                                 match.setPlayerFour(playerFour);
                                 match.setSportCenter(location);
                                 db.matchDao().update(match);
-                                Toast.makeText(this, "Match " + match.getId() + " modified", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(this, getString(R.string.match_modified), Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         }
-                ).setNegativeButton("No",
+                ).setNegativeButton(R.string.no,
                 (dialog, which) -> dialog.dismiss());
         builder.create().show();
     }
 
     public void clickDate(View view){
-        switch (view.getId()) {
-            case R.id.match_date:
-                showDatePickerDialog();
-                break;
+        if (view.getId() == R.id.match_date) {
+            showDatePickerDialog();
         }
     }
 
     private void showDatePickerDialog() {
-        DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                final String selectedDate = day + " / " + (month+1) + " / " + year;
-                date.setText(selectedDate);
-            }
+        DatePickerFragment newFragment = DatePickerFragment.newInstance((datePicker, year, month, day) -> {
+            final String selectedDate = day + " / " + (month+1) + " / " + year;
+            date.setText(selectedDate);
         });
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }

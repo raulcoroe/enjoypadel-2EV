@@ -28,10 +28,10 @@
             android:drawableBottom="@mipmap/ic_launcher_player"
             android:fontFamily="@font/audiowide"
             android:onClick="selectPlayers"
-            android:text="PLAYERS"
+            android:text="@string/players"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="34sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <Button
@@ -47,27 +47,29 @@
             android:drawableBottom="@mipmap/ic_launcher_match"
             android:fontFamily="@font/audiowide"
             android:onClick="selectMatches"
-            android:text="MATCHES"
+            android:text="@string/matches"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="34sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/locations_button"
+            android:id="@+id/center_button"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="30dp"
             android:layout_weight="1"
             android:background="@drawable/round_button"
-            android:drawableBottom="@android:drawable/ic_menu_mapmode"
+            android:bottomLeftRadius="10dp"
+            android:bottomRightRadius="10dp"
+            android:drawableBottom="@mipmap/ic_launcher_sport_center"
             android:fontFamily="@font/audiowide"
             android:onClick="selectLocations"
-            android:text="LOCATIONS"
+            android:text="@string/centers"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="34sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
     </LinearLayout>

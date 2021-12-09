@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:ems="10"
-            android:hint="Name"
+            android:hint="@string/name"
             android:inputType="textPersonName|textCapSentences"
             android:minHeight="48dp" />
 
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:ems="10"
-            android:hint="Surname"
+            android:hint="@string/surname"
             android:inputType="textPersonName|textCapSentences"
             android:minHeight="48dp" />
 
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:ems="10"
-            android:hint="Level"
+            android:hint="@string/level"
             android:inputType="textPersonName|textCapSentences"
             android:minHeight="48dp" />
 
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:minHeight="48dp"
-            android:text="Availability" />
+            android:text="@string/availability" />
 
         <ImageView
             android:id="@+id/player_profile"
@@ -72,7 +72,7 @@
         android:layout_marginBottom="80dp"
         android:layout_weight="1"
         android:onClick="addOrModifyPlayer"
-        android:text="ADD"
+        android:text="@string/add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.39"

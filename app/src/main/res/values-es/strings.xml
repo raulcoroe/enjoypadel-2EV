@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Enjoy Padel</string>
+    <string name="google_maps_key">AIzaSyA9DuscA3BNAypTwbe0Dd9xy-Wf3dVJxqM</string>
+    <string name="smipper_text">Localizacion del centro deportivo</string>
+    <string name="must_center_name">Debes introducir el nombre del centro deportivo> </string>
+    <string name="modify_match">Modifica el partido</string>
+    <string name="sure">¿Estas seguro?</string>
+    <string name="yes">Si</string>
+    <string name="no">No</string>
+    <string name="match_modified">Partido modificado</string>
+    <string name="player_modified">Jugador %s modificado</string>
+    <string name="must_player_name">Debes introducir el nombre del jugador</string>
+    <string name="not_specified">No especificado</string>
+    <string name="player_added">Jugador %s añadido</string>
+    <string name="match_added">Partido añadido</string>
+    <string name="must_tournament_round">Debes introducir la ronda del torneo</string>
+    <string name="dialog_photo">¿Qué deseas?</string>
+    <string name="take_photo">Hacer una foto</string>
+    <string name="choose_photo">Elegir foto</string>
+    <string name="modify">MODIFICAR</string>
+    <string name="available">Disponible</string>
+    <string name="not_available">No disponible</string>
+    <string name="sport_center_name">Nombre del centro deportivo</string>
+    <string name="add_sport_center">Añadir centro deportivo</string>
+    <string name="enter_the_tournament_round">Introduce la ronda del torneo</string>
+    <string name="team_1">EQUIPO 1</string>
+    <string name="team_2">EQUIPO 2</string>
+    <string name="location">LOCALIZACION</string>
+    <string name="date_of_the_match">Fecha del partido</string>
+    <string name="match_duration">Duracion del partido</string>
+    <string name="match_score">Resultado del partido</string>
+    <string name="create_a_match">Crea un partido</string>
+    <string name="name">Nombre</string>
+    <string name="surname">Apellidos</string>
+    <string name="level">Nivel</string>
+    <string name="availability">Disponibilidad</string>
+    <string name="add">AÑADIR</string>
+    <string name="matches">PARTIDOS</string>
+    <string name="centers">CENTROS</string>
+    <string name="players">JUGADORES</string>
+    <string name="match_area">Partidos</string>
+    <string name="round">Ronda</string>
+    <string name="player_one">Jugador 1</string>
+    <string name="player_two">Jugador 2</string>
+    <string name="locationTv">Localización</string>
+    <string name="date">Fecha</string>
+    <string name="duration">Duración</string>
+    <string name="score">Resultado</string>
+    <string name="player_area">Jugadores</string>
+    <string name="center_area">Centros deportivos</string>
+    <string name="add_center">Añadir centro</string>
+    <string name="item">Objeto</string>
+    <string name="add_player">Añdir jugador</string>
+    <string name="preferences">Preferencias</string>
+    <string name="edit">Modificar</string>
+    <string name="delete">Eliminar</string>
+    <string name="available_players">Visualizar solo jugadores disponibles</string>
+    <string name="hide">Ocultar apellidos</string>
+    <string name="restrict_mod_del">Restringir modificar y eliminar</string>
+    <string name="visualisation">Visualización</string>
+    <string name="restriction">Restricciones</string>
+    />
+
+</resources>
