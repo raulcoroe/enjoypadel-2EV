@@ -1,4 +1,4 @@
-package com.svalero.enjoypadel.acitivities;
+package com.svalero.enjoypadel.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,11 +19,12 @@ import com.svalero.enjoypadel.database.AppDatabase;
 import com.svalero.enjoypadel.domain.Match;
 import com.svalero.enjoypadel.domain.Player;
 import com.svalero.enjoypadel.domain.SportCenter;
+import com.svalero.enjoypadel.presenter.AddMatchPresenter;
 import com.svalero.enjoypadel.utils.DatePickerFragment;
 
 import java.util.List;
 
-public class AddMatchActivity extends AppCompatActivity {
+public class AddMatchView extends AppCompatActivity {
 
     private Spinner spinnerOne;
     private Spinner spinnerTwo;
@@ -39,11 +40,14 @@ public class AddMatchActivity extends AppCompatActivity {
     private EditText round;
     private EditText duration;
     private EditText matchScore;
+    private AddMatchPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_match);
+
+        presenter = new AddMatchPresenter(this);
 
         List<Player> players;
         List<SportCenter> centers;
@@ -150,7 +154,7 @@ public class AddMatchActivity extends AppCompatActivity {
                             if (intent.getIntExtra("modify", 0) == 0) {
                                 Match match = new Match();
                                 if (round.getText().toString().equals("")) {
-                                    Toast.makeText(AddMatchActivity.this, R.string.must_tournament_round, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(AddMatchView.this, R.string.must_tournament_round, Toast.LENGTH_SHORT).show();
                                 } else {
                                     match.setRound(round.getText().toString());
                                     match.setDate(date.getText().toString());

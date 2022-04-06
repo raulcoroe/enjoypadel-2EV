@@ -3,7 +3,6 @@ package com.svalero.enjoypadel.view;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,10 +15,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.svalero.enjoypadel.R;
-import com.svalero.enjoypadel.acitivities.AddMatchActivity;
 import com.svalero.enjoypadel.acitivities.MatchDetailActivity;
 import com.svalero.enjoypadel.contract.MatchListContract;
-import com.svalero.enjoypadel.database.AppDatabase;
 import com.svalero.enjoypadel.domain.Match;
 import com.svalero.enjoypadel.presenter.MatchListPresenter;
 
@@ -67,7 +64,7 @@ public class MatchListView extends AppCompatActivity implements AdapterView.OnIt
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.add_match) {
-            Intent intent = new Intent(this, AddMatchActivity.class);
+            Intent intent = new Intent(this, AddMatchView.class);
             startActivity(intent);
             return true;
         }
@@ -103,7 +100,7 @@ public class MatchListView extends AppCompatActivity implements AdapterView.OnIt
 
 
             case R.id.action_edit:
-                Intent intent = new Intent(this, AddMatchActivity.class);
+                Intent intent = new Intent(this, AddMatchView.class);
                 intent.putExtra("round", match.getRound());
                 intent.putExtra("duration", match.getDuration());
                 intent.putExtra("date", match.getDate());

@@ -9,12 +9,12 @@ import com.svalero.enjoypadel.database.AppDatabase;
 import com.svalero.enjoypadel.domain.Player;
 import com.svalero.enjoypadel.view.AddPlayerView;
 
-public class AddplayerModel implements AddPlayerContract.Model {
+public class AddPlayerModel implements AddPlayerContract.Model {
 
     private AddPlayerView view;
     private AppDatabase db;
 
-    public AddplayerModel(AddPlayerView view) {
+    public AddPlayerModel(AddPlayerView view) {
         this.view = view;
 
         db = Room.databaseBuilder(view.getApplicationContext(),

@@ -2,17 +2,17 @@ package com.svalero.enjoypadel.presenter;
 
 import com.svalero.enjoypadel.contract.AddPlayerContract;
 import com.svalero.enjoypadel.domain.Player;
-import com.svalero.enjoypadel.model.AddplayerModel;
+import com.svalero.enjoypadel.model.AddPlayerModel;
 import com.svalero.enjoypadel.view.AddPlayerView;
 
 public class AddPlayerPresenter implements AddPlayerContract.Presenter {
 
-    private AddplayerModel model;
+    private AddPlayerModel model;
     private AddPlayerView view;
 
     public AddPlayerPresenter(AddPlayerView view) {
         this.view = view;
-        model = new AddplayerModel(view);
+        model = new AddPlayerModel(view);
 
     }
 

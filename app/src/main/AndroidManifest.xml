@@ -31,7 +31,7 @@
             android:name=".acitivities.MatchDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".acitivities.AddMatchActivity"
+            android:name=".view.AddMatchView"
             android:exported="false" />
         <activity
             android:name=".view.MatchListView"
