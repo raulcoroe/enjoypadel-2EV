@@ -1,4 +1,4 @@
-package com.svalero.enjoypadel.acitivities;
+package com.svalero.enjoypadel.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -16,25 +16,35 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.svalero.enjoypadel.R;
+import com.svalero.enjoypadel.acitivities.AddMatchActivity;
+import com.svalero.enjoypadel.acitivities.MatchDetailActivity;
+import com.svalero.enjoypadel.contract.MatchListContract;
 import com.svalero.enjoypadel.database.AppDatabase;
 import com.svalero.enjoypadel.domain.Match;
+import com.svalero.enjoypadel.presenter.MatchListPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MatchActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class MatchListView extends AppCompatActivity implements AdapterView.OnItemClickListener, MatchListContract.View {
 
-    private List<Match> matches;
+    private List<Match> matchList;
     private ArrayAdapter<Match> matchesAdapter;
+    private MatchListPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match);
 
-        matches = new ArrayList<>();
+        presenter = new MatchListPresenter(this);
+        initialize();
+    }
+
+    private void initialize() {
+        matchList = new ArrayList<>();
         ListView lvMatches = findViewById(R.id.match_list);
-        matchesAdapter = new ArrayAdapter<Match>(this, android.R.layout.simple_list_item_1, matches);
+        matchesAdapter = new ArrayAdapter<Match>(this, android.R.layout.simple_list_item_1, matchList);
         lvMatches.setAdapter(matchesAdapter);
         registerForContextMenu(lvMatches);
 
@@ -45,13 +55,7 @@ public class MatchActivity extends AppCompatActivity implements AdapterView.OnIt
     protected void onResume() {
         super.onResume();
 
-        matches.clear();
-        AppDatabase db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "tournament").allowMainThreadQueries()
-                .fallbackToDestructiveMigration().build();
-
-        matches.addAll(db.matchDao().getAll());
-        matchesAdapter.notifyDataSetChanged();
+        presenter.loadAllMatches();
     }
 
     @Override
@@ -80,7 +84,7 @@ public class MatchActivity extends AppCompatActivity implements AdapterView.OnIt
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        Match match = matches.get(info.position);
+        Match match = matchList.get(info.position);
 
         switch (item.getItemId()) {
             case R.id.action_delete:
@@ -88,11 +92,8 @@ public class MatchActivity extends AppCompatActivity implements AdapterView.OnIt
                 builder.setMessage(R.string.sure)
                         .setPositiveButton(R.string.yes,
                                 (dialog, which) -> {
-                                    AppDatabase db = Room.databaseBuilder(getApplicationContext(),
-                                            AppDatabase.class, "tournament").allowMainThreadQueries()
-                                            .fallbackToDestructiveMigration().build();
-                                    db.matchDao().delete(match);
-                                    matches.remove(match);
+                                    presenter.deleteMatch(match);
+                                    matchList.remove(match);
                                     matchesAdapter.notifyDataSetChanged();
                                 }
                         ).setNegativeButton(R.string.no,
@@ -117,9 +118,9 @@ public class MatchActivity extends AppCompatActivity implements AdapterView.OnIt
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Match match = matches.get(position);
+        Match match = matchList.get(position);
 
-        Intent intentDetail = new Intent(MatchActivity.this, MatchDetailActivity.class);
+        Intent intentDetail = new Intent(MatchListView.this, MatchDetailActivity.class);
         intentDetail.putExtra("round", match.getRound());
         intentDetail.putExtra("duration", match.getDuration());
         intentDetail.putExtra("date", match.getDate());
@@ -131,5 +132,17 @@ public class MatchActivity extends AppCompatActivity implements AdapterView.OnIt
         intentDetail.putExtra("playerFour", match.getPlayerFour());
         intentDetail.putExtra("location", match.getSportCenter());
         startActivity(intentDetail);
+    }
+
+    @Override
+    public void listAllMatches(List<Match> matches) {
+        matchList.clear();
+        matchList.addAll(matches);
+        matchesAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void showMessage(String message) {
+
     }
 }

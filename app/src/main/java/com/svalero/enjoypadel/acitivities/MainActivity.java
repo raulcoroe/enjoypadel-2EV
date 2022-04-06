@@ -1,14 +1,13 @@
 package com.svalero.enjoypadel.acitivities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 import com.svalero.enjoypadel.R;
+import com.svalero.enjoypadel.view.MatchListView;
+import com.svalero.enjoypadel.view.PlayerListView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,12 +18,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void selectPlayers(View view){
-        Intent intent = new Intent(this, PlayerActivity.class);
+        Intent intent = new Intent(this, PlayerListView.class);
         startActivity(intent);
     }
 
     public void selectMatches(View view){
-        Intent intent = new Intent(this, MatchActivity.class);
+        Intent intent = new Intent(this, MatchListView.class);
         startActivity(intent);
     }
 

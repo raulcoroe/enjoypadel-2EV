@@ -34,16 +34,16 @@
             android:name=".acitivities.AddMatchActivity"
             android:exported="false" />
         <activity
-            android:name=".acitivities.MatchActivity"
+            android:name=".view.MatchListView"
             android:exported="false" />
         <activity
             android:name=".acitivities.Preferences"
             android:exported="false" />
         <activity
-            android:name=".acitivities.AddPlayerActivity"
+            android:name=".view.AddPlayerView"
             android:exported="false" />
         <activity
-            android:name=".acitivities.PlayerActivity"
+            android:name=".view.PlayerListView"
             android:exported="false" />
         <activity
             android:name=".acitivities.MainActivity"
