@@ -1,10 +1,11 @@
 package com.svalero.enjoypadel.contract;
 
-import com.svalero.enjoypadel.domain.Player;
+import com.svalero.enjoypadel.domain.Center;
+import com.svalero.enjoypadel.domain.Match;
 
 import java.util.List;
 
-public interface PlayerListContract {
+public interface CenterListContract {
 
     interface Model {
 //        interface OnLoadPlayersListener {
@@ -17,19 +18,19 @@ public interface PlayerListContract {
 //            void onDeletePlayerError(String message);
 //        }
 
-        List<Player> loadAllPlayers();
-        void deletePlayer(Player player);
+        List<Center> loadAllCenters();
+        void deleteCenter(Center center);
 
     }
 
     interface View {
-        void listAllPlayers(List<Player> players);
+        void listAllCenters(List<Center> centers);
         void showMessage(String message);
     }
 
     interface Presenter {
-        void loadAllPlayers();
-        void deletePlayer(Player player);
+        void loadAllCenters();
+        void deleteCenter(Center center);
     }
 
 }

@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey;
 import com.svalero.enjoypadel.R;
 
 @Entity
-public class Player {
+    public class Player {
 
 @PrimaryKey(autoGenerate = true)
     private int id;

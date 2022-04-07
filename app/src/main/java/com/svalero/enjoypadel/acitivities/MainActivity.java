@@ -8,6 +8,7 @@ import android.view.View;
 import com.svalero.enjoypadel.R;
 import com.svalero.enjoypadel.view.MatchListView;
 import com.svalero.enjoypadel.view.PlayerListView;
+import com.svalero.enjoypadel.view.CenterListView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void selectLocations(View view){
-        Intent intent = new Intent(this, SportCenterActivity.class);
+        Intent intent = new Intent(this, CenterListView.class);
         startActivity(intent);
     }
 }

@@ -1,7 +1,5 @@
 package com.svalero.enjoypadel.contract;
 
-import android.view.View;
-
 import com.svalero.enjoypadel.domain.Player;
 
 public interface AddPlayerContract {

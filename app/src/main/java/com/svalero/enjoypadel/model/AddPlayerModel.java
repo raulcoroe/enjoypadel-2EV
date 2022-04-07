@@ -1,7 +1,5 @@
 package com.svalero.enjoypadel.model;
 
-import android.content.Context;
-
 import androidx.room.Room;
 
 import com.svalero.enjoypadel.contract.AddPlayerContract;

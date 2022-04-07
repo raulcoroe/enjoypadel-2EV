@@ -18,12 +18,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.room.Room;
 
 import com.squareup.picasso.Picasso;
 import com.svalero.enjoypadel.R;
 import com.svalero.enjoypadel.contract.AddPlayerContract;
-import com.svalero.enjoypadel.database.AppDatabase;
 import com.svalero.enjoypadel.domain.Player;
 import com.svalero.enjoypadel.presenter.AddPlayerPresenter;
 import com.svalero.enjoypadel.utils.ImageUtils;

@@ -8,7 +8,6 @@ import androidx.room.Update;
 
 import com.svalero.enjoypadel.domain.Player;
 
-import java.util.Collection;
 import java.util.List;
 
 @Dao

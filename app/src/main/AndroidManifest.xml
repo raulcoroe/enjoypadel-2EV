@@ -19,13 +19,13 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".acitivities.AddCenterActivity"
+            android:name=".view.AddCenterView"
             android:exported="false" />
         <activity
-            android:name=".acitivities.SportCenterActivity"
+            android:name=".view.CenterListView"
             android:exported="false" />
         <activity
-            android:name=".acitivities.CenterDetailActivity"
+            android:name=".view.CenterDetailView"
             android:exported="false" />
         <activity
             android:name=".acitivities.MatchDetailActivity"

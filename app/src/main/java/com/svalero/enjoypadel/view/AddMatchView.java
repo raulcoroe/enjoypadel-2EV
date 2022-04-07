@@ -16,9 +16,9 @@ import androidx.room.Room;
 
 import com.svalero.enjoypadel.R;
 import com.svalero.enjoypadel.database.AppDatabase;
+import com.svalero.enjoypadel.domain.Center;
 import com.svalero.enjoypadel.domain.Match;
 import com.svalero.enjoypadel.domain.Player;
-import com.svalero.enjoypadel.domain.SportCenter;
 import com.svalero.enjoypadel.presenter.AddMatchPresenter;
 import com.svalero.enjoypadel.utils.DatePickerFragment;
 
@@ -48,97 +48,11 @@ public class AddMatchView extends AppCompatActivity {
         setContentView(R.layout.activity_add_match);
 
         presenter = new AddMatchPresenter(this);
-
-        List<Player> players;
-        List<SportCenter> centers;
-
-        spinnerOne = findViewById(R.id.spinner_one);
-        spinnerTwo = findViewById(R.id.spinner_two);
-        spinnerThree = findViewById(R.id.spinner_three);
-        spinnerFour = findViewById(R.id.spinner_four);
-        spinnerLocation = findViewById(R.id.spinner_location);
-
-        AppDatabase db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "tournament").allowMainThreadQueries()
-                .fallbackToDestructiveMigration().build();
-        players = db.playerDao().getAll();
-        centers = db.sportCenterDao().getAll();
-
-        ArrayAdapter adp = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, players);
-        ArrayAdapter adpCenter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, centers);
-        spinnerOne.setAdapter(adp);
-        spinnerTwo.setAdapter(adp);
-        spinnerThree.setAdapter(adp);
-        spinnerFour.setAdapter(adp);
-        spinnerLocation.setAdapter(adpCenter);
-
-
-        spinnerOne.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                playerOne = spinnerOne.getItemAtPosition(pos).toString();
-            }
-
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-
-        spinnerTwo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                playerTwo = spinnerTwo.getItemAtPosition(pos).toString();
-            }
-
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-
-        spinnerThree.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                playerThree = spinnerThree.getItemAtPosition(pos).toString();
-            }
-
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-
-        spinnerFour.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                playerFour = spinnerFour.getItemAtPosition(pos).toString();
-            }
-
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-
-        spinnerLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                location = spinnerLocation.getItemAtPosition(position).toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        Intent intent = getIntent();
-        round = findViewById(R.id.round);
-        duration = findViewById(R.id.duration);
-        matchScore = findViewById(R.id.match_score);
-        date = findViewById(R.id.match_date);
-        round.setText(intent.getStringExtra("round"));
-        matchScore.setText(intent.getStringExtra("matchScore"));
-        date.setText(intent.getStringExtra("date"));
-        if (intent.getIntExtra("duration", 0) == 0){
-            duration.setText("");
-        } else {
-            duration.setText(String.valueOf(intent.getIntExtra("duration", 0)));
-        }
-        if (intent.getIntExtra("modify", 0) == 1) {
-            Button modifyBtn = findViewById(R.id.add_match_button);
-            modifyBtn.setText(R.string.modify_match);
-        }
+        initilize();
+        presenter.chargeSpinners();
     }
+
+
 
     public void createMatch(View view) {
         Intent intent = getIntent();
@@ -212,5 +126,89 @@ public class AddMatchView extends AppCompatActivity {
             date.setText(selectedDate);
         });
         newFragment.show(getSupportFragmentManager(), "datePicker");
+    }
+
+    public void initilize(){
+        spinnerOne = findViewById(R.id.spinner_one);
+        spinnerTwo = findViewById(R.id.spinner_two);
+        spinnerThree = findViewById(R.id.spinner_three);
+        spinnerFour = findViewById(R.id.spinner_four);
+        spinnerLocation = findViewById(R.id.spinner_location);
+        round = findViewById(R.id.round);
+        duration = findViewById(R.id.duration);
+        matchScore = findViewById(R.id.match_score);
+        date = findViewById(R.id.match_date);
+    }
+
+    public void chargeElements(List<Player> players, List<Center> centers){
+        ArrayAdapter adp = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, players);
+        ArrayAdapter adpCenter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, centers);
+        spinnerOne.setAdapter(adp);
+        spinnerTwo.setAdapter(adp);
+        spinnerThree.setAdapter(adp);
+        spinnerFour.setAdapter(adp);
+        spinnerLocation.setAdapter(adpCenter);
+
+
+        spinnerOne.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                playerOne = spinnerOne.getItemAtPosition(pos).toString();
+            }
+
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        spinnerTwo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                playerTwo = spinnerTwo.getItemAtPosition(pos).toString();
+            }
+
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        spinnerThree.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                playerThree = spinnerThree.getItemAtPosition(pos).toString();
+            }
+
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        spinnerFour.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                playerFour = spinnerFour.getItemAtPosition(pos).toString();
+            }
+
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        spinnerLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                location = spinnerLocation.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        Intent intent = getIntent();
+        round.setText(intent.getStringExtra("round"));
+        matchScore.setText(intent.getStringExtra("matchScore"));
+        date.setText(intent.getStringExtra("date"));
+        if (intent.getIntExtra("duration", 0) == 0){
+            duration.setText("");
+        } else {
+            duration.setText(String.valueOf(intent.getIntExtra("duration", 0)));
+        }
+        if (intent.getIntExtra("modify", 0) == 1) {
+            Button modifyBtn = findViewById(R.id.add_match_button);
+            modifyBtn.setText(R.string.modify_match);
+        }
     }
 }
