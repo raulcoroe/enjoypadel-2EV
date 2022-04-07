@@ -42,7 +42,7 @@ public class AddMatchPresenter implements AddMatchContract.Presenter {
     }
 
     public void chargeSpinners() {
-        players = modelPlayer.loadAllPlayers();
+//        players = modelPlayer.loadAllPlayers();
         centers = modelCenter.loadAllCenters();
         view.chargeElements(players, centers);
     }

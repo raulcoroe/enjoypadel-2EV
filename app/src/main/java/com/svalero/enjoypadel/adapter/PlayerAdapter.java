@@ -71,9 +71,11 @@ public class PlayerAdapter  extends BaseAdapter {
         }
 
         Player player = playerList.get(position);
-        Bitmap bitmap = BitmapFactory.decodeByteArray(player.getImage(), 0, player.getImage().length);
+        if (player.getImage() != null) {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(player.getImage(), 0, player.getImage().length);
+            holder.photo.setImageBitmap(bitmap);
+        }
 
-        holder.photo.setImageBitmap(bitmap);
         holder.name.setText(player.getName());
         holder.surname.setText(player.getSurname());
         holder.level.setText(player.getLevel());

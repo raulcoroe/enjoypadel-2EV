@@ -7,17 +7,17 @@ import java.util.List;
 public interface PlayerListContract {
 
     interface Model {
-//        interface OnLoadPlayersListener {
-//            void onLoadPlayersSuccess(List<Player> players);
-//            void onLoadPlayersError(String message);
-//        }
-//
-//        interface OnDeletePlayerListener {
-//            void onDeletePlayerSuccess(String message);
-//            void onDeletePlayerError(String message);
-//        }
+        interface OnLoadPlayersListener {
+            void onLoadPlayersSuccess(List<Player> players);
+            void onLoadPlayersError(String message);
+        }
 
-        List<Player> loadAllPlayers();
+        interface OnDeletePlayerListener {
+            void onDeletePlayerSuccess(String message);
+            void onDeletePlayerError(String message);
+        }
+
+        void loadAllPlayers(OnLoadPlayersListener listener);
         void deletePlayer(Player player);
 
     }

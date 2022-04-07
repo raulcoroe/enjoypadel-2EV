@@ -21,6 +21,8 @@ import androidx.core.app.ActivityCompat;
 
 import com.squareup.picasso.Picasso;
 import com.svalero.enjoypadel.R;
+import com.svalero.enjoypadel.api.EnjoyPadelApi;
+import com.svalero.enjoypadel.api.EnjoyPadelApiInterface;
 import com.svalero.enjoypadel.contract.AddPlayerContract;
 import com.svalero.enjoypadel.domain.Player;
 import com.svalero.enjoypadel.presenter.AddPlayerPresenter;
@@ -74,6 +76,7 @@ public class AddPlayerView extends AppCompatActivity implements AddPlayerContrac
 
 
     public void addOrModifyPlayer(View view) {
+
         Intent intent = getIntent();
 
         if (etName.getText().toString().equals("")) {
