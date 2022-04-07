@@ -16,7 +16,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.svalero.enjoypadel.R;
-import com.svalero.enjoypadel.acitivities.Preferences;
 import com.svalero.enjoypadel.adapter.PlayerAdapter;
 import com.svalero.enjoypadel.contract.PlayerListContract;
 import com.svalero.enjoypadel.domain.Player;
@@ -70,7 +69,7 @@ public class PlayerListView extends AppCompatActivity implements PlayerListContr
         }
 
         if (item.getItemId() == R.id.preferences) {
-            Intent intent = new Intent(this, Preferences.class);
+            Intent intent = new Intent(this, PreferenceView.class);
             startActivity(intent);
             return true;
         }

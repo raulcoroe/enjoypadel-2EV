@@ -48,6 +48,7 @@ public class PlayerListModel implements PlayerListContract.Model {
         return players;
     }
 
+
     @Override
     public void deletePlayer(Player player) {
         db.playerDao().delete(player);

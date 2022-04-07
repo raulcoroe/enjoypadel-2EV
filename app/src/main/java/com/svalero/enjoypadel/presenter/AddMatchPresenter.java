@@ -25,6 +25,8 @@ public class AddMatchPresenter implements AddMatchContract.Presenter {
     public AddMatchPresenter(AddMatchView view) {
         this.view = view;
         model = new AddMatchModel(view);
+        modelPlayer = new PlayerListModel(view);
+        modelCenter = new CenterListModel(view);
         players = new ArrayList<>();
         centers = new ArrayList<>();
     }

@@ -28,7 +28,7 @@
             android:name=".view.CenterDetailView"
             android:exported="false" />
         <activity
-            android:name=".acitivities.MatchDetailActivity"
+            android:name=".view.MatchDetailView"
             android:exported="false" />
         <activity
             android:name=".view.AddMatchView"
@@ -37,7 +37,7 @@
             android:name=".view.MatchListView"
             android:exported="false" />
         <activity
-            android:name=".acitivities.Preferences"
+            android:name=".view.PreferenceView"
             android:exported="false" />
         <activity
             android:name=".view.AddPlayerView"
@@ -46,7 +46,7 @@
             android:name=".view.PlayerListView"
             android:exported="false" />
         <activity
-            android:name=".acitivities.MainActivity"
+            android:name=".view.MainActivityView"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

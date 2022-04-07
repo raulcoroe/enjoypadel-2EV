@@ -1,4 +1,4 @@
-package com.svalero.enjoypadel.acitivities;
+package com.svalero.enjoypadel.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
@@ -10,7 +10,7 @@ import com.svalero.enjoypadel.view.MatchListView;
 import com.svalero.enjoypadel.view.PlayerListView;
 import com.svalero.enjoypadel.view.CenterListView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivityView extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

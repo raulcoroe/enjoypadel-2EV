@@ -1,6 +1,10 @@
 package com.svalero.enjoypadel.contract;
 
+import com.svalero.enjoypadel.domain.Center;
 import com.svalero.enjoypadel.domain.Match;
+import com.svalero.enjoypadel.domain.Player;
+
+import java.util.List;
 
 public interface AddMatchContract {
 
@@ -12,9 +16,11 @@ public interface AddMatchContract {
     interface Presenter {
         void addMatch(Match match);
         void modifyMatch(Match match);
+        void chargeSpinners();
     }
 
     interface View {
-        void addOrModifyMatch(android.view.View view);
+        void createMatch(android.view.View view);
+        void chargeElements(List<Player> players, List<Center> centers);
     }
 }

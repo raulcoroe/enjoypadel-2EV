@@ -17,11 +17,12 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.svalero.enjoypadel.R;
+import com.svalero.enjoypadel.contract.AddCenterContract;
 import com.svalero.enjoypadel.database.AppDatabase;
 import com.svalero.enjoypadel.domain.Center;
 import com.svalero.enjoypadel.presenter.AddCenterPresenter;
 
-public class AddCenterView extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener {
+public class AddCenterView extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener, AddCenterContract.View {
 
     private GoogleMap map;
     private LatLng location;

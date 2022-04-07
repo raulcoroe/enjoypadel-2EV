@@ -15,7 +15,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.svalero.enjoypadel.R;
-import com.svalero.enjoypadel.acitivities.MatchDetailActivity;
 import com.svalero.enjoypadel.contract.MatchListContract;
 import com.svalero.enjoypadel.domain.Match;
 import com.svalero.enjoypadel.presenter.MatchListPresenter;
@@ -117,17 +116,8 @@ public class MatchListView extends AppCompatActivity implements AdapterView.OnIt
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Match match = matchList.get(position);
 
-        Intent intentDetail = new Intent(MatchListView.this, MatchDetailActivity.class);
-        intentDetail.putExtra("round", match.getRound());
-        intentDetail.putExtra("duration", match.getDuration());
-        intentDetail.putExtra("date", match.getDate());
-        intentDetail.putExtra("matchScore", match.getMatchScore());
+        Intent intentDetail = new Intent(MatchListView.this, MatchDetailView.class);
         intentDetail.putExtra("matchId", match.getId());
-        intentDetail.putExtra("playerOne", match.getPlayerOne());
-        intentDetail.putExtra("playerTwo", match.getPlayerTwo());
-        intentDetail.putExtra("playerThree", match.getPlayerThree());
-        intentDetail.putExtra("playerFour", match.getPlayerFour());
-        intentDetail.putExtra("location", match.getSportCenter());
         startActivity(intentDetail);
     }
 
