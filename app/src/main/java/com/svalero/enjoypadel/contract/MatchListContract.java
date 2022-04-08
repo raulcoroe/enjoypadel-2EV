@@ -7,18 +7,18 @@ import java.util.List;
 public interface MatchListContract {
 
     interface Model {
-//        interface OnLoadPlayersListener {
-//            void onLoadPlayersSuccess(List<Player> players);
-//            void onLoadPlayersError(String message);
-//        }
-//
-//        interface OnDeletePlayerListener {
-//            void onDeletePlayerSuccess(String message);
-//            void onDeletePlayerError(String message);
-//        }
+        interface OnLoadMatchesListener {
+            void onLoadMatchesSuccess(List<Match> matches);
+            void onLoadMatchesError(String message);
+        }
 
-        List<Match> loadAllMatches();
-        void deleteMatch(Match match);
+        interface OnDeleteMatchListener {
+            void onDeleteMatchSuccess(String message);
+            void onDeleteMatchError(String message);
+        }
+
+        void loadAllMatches(OnLoadMatchesListener listener);
+        void deleteMatch(Match match, OnDeleteMatchListener listener);
 
     }
 

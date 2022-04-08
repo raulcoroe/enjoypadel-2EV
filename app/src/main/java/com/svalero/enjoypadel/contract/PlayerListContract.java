@@ -18,7 +18,7 @@ public interface PlayerListContract {
         }
 
         void loadAllPlayers(OnLoadPlayersListener listener);
-        void deletePlayer(Player player);
+        void deletePlayer(Player player, OnDeletePlayerListener listener);
 
     }
 

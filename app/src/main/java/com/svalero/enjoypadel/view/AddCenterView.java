@@ -80,4 +80,9 @@ public class AddCenterView extends AppCompatActivity implements OnMapReadyCallba
             finish();
         }
     }
+
+    @Override
+    public void showMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
 }

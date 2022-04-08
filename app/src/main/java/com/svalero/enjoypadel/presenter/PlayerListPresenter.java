@@ -7,7 +7,7 @@ import com.svalero.enjoypadel.view.PlayerListView;
 
 import java.util.List;
 
-public class PlayerListPresenter implements PlayerListContract.Presenter, PlayerListContract.Model.OnLoadPlayersListener {
+public class PlayerListPresenter implements PlayerListContract.Presenter, PlayerListContract.Model.OnLoadPlayersListener,PlayerListContract.Model.OnDeletePlayerListener {
 
     private PlayerListModel model;
     private PlayerListView view;
@@ -22,10 +22,9 @@ public class PlayerListPresenter implements PlayerListContract.Presenter, Player
         model.loadAllPlayers(this);
     }
 
-
     @Override
     public void deletePlayer(Player player) {
-        model.deletePlayer(player);
+        model.deletePlayer(player, this);
     }
 
     @Override
@@ -35,6 +34,16 @@ public class PlayerListPresenter implements PlayerListContract.Presenter, Player
 
     @Override
     public void onLoadPlayersError(String message) {
+        view.showMessage(message);
+    }
+
+    @Override
+    public void onDeletePlayerSuccess(String message) {
+        view.showMessage(message);
+    }
+
+    @Override
+    public void onDeletePlayerError(String message) {
         view.showMessage(message);
     }
 }

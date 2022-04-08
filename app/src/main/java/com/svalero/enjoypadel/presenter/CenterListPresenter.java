@@ -7,7 +7,7 @@ import com.svalero.enjoypadel.view.CenterListView;
 
 import java.util.List;
 
-public class CenterListPresenter implements CenterListContract.Presenter {
+public class CenterListPresenter implements CenterListContract.Presenter, CenterListContract.Model.OnDeleteCenterListener, CenterListContract.Model.OnLoadCentersListener {
 
     private CenterListModel model;
     private CenterListView view;
@@ -19,13 +19,32 @@ public class CenterListPresenter implements CenterListContract.Presenter {
 
     @Override
     public void loadAllCenters() {
-        List<Center> centers = model.loadAllCenters();
-        view.listAllCenters(centers);
+        model.loadAllCenters(this);
     }
 
 
     @Override
     public void deleteCenter(Center center) {
-        model.deleteCenter(center);
+        model.deleteCenter(center, this);
+    }
+
+    @Override
+    public void onLoadCentersSuccess(List<Center> centers) {
+        view.listAllCenters(centers);
+    }
+
+    @Override
+    public void onLoadCentersError(String message) {
+        view.showMessage(message);
+    }
+
+    @Override
+    public void onDeleteCenterSuccess(String message) {
+        view.showMessage(message);
+    }
+
+    @Override
+    public void onDeleteCenterError(String message) {
+        view.showMessage(message);
     }
 }

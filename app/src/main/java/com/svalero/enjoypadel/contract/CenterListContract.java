@@ -8,18 +8,18 @@ import java.util.List;
 public interface CenterListContract {
 
     interface Model {
-//        interface OnLoadPlayersListener {
-//            void onLoadPlayersSuccess(List<Player> players);
-//            void onLoadPlayersError(String message);
-//        }
-//
-//        interface OnDeletePlayerListener {
-//            void onDeletePlayerSuccess(String message);
-//            void onDeletePlayerError(String message);
-//        }
+        interface OnLoadCentersListener {
+            void onLoadCentersSuccess(List<Center> centers);
+            void onLoadCentersError(String message);
+        }
 
-        List<Center> loadAllCenters();
-        void deleteCenter(Center center);
+        interface OnDeleteCenterListener {
+            void onDeleteCenterSuccess(String message);
+            void onDeleteCenterError(String message);
+        }
+
+        void loadAllCenters(OnLoadCentersListener listener);
+        void deleteCenter(Center center, OnDeleteCenterListener listener);
 
     }
 

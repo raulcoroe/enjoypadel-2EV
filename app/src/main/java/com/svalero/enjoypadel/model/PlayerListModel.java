@@ -24,6 +24,7 @@ public class PlayerListModel implements PlayerListContract.Model {
     private List<Player> players;
     private AppDatabase db;
     private Context context;
+    private EnjoyPadelApiInterface api;
 
     public PlayerListModel(Context context) {
         this.context = context;
@@ -31,14 +32,12 @@ public class PlayerListModel implements PlayerListContract.Model {
         db = Room.databaseBuilder(context,
                 AppDatabase.class, "tournament").allowMainThreadQueries()
                 .fallbackToDestructiveMigration().build();
+        api = EnjoyPadelApi.buildInstance();
     }
 
     @Override
     public void loadAllPlayers(OnLoadPlayersListener listener) {
         players.clear();
-
-        EnjoyPadelApiInterface api = EnjoyPadelApi.buildInstance();
-
 
         SharedPreferences preferencias = PreferenceManager.getDefaultSharedPreferences(context);
         boolean available = preferencias.getBoolean("available_players", false);
@@ -72,7 +71,19 @@ public class PlayerListModel implements PlayerListContract.Model {
 
 
     @Override
-    public void deletePlayer(Player player) {
-        db.playerDao().delete(player);
+    public void deletePlayer(Player player, OnDeletePlayerListener listener){
+        Call<Void> callPlayers = api.deletePlayer(player.getId());
+        callPlayers.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                listener.onDeletePlayerSuccess("Jugador eliminado");
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                listener.onDeletePlayerError("El jugador no se ha eliminado");
+                t.printStackTrace();
+            }
+        });
     }
 }

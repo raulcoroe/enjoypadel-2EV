@@ -1,6 +1,7 @@
 package com.svalero.enjoypadel.presenter;
 
 import com.svalero.enjoypadel.contract.AddCenterContract;
+import com.svalero.enjoypadel.contract.AddMatchContract;
 import com.svalero.enjoypadel.contract.AddPlayerContract;
 import com.svalero.enjoypadel.domain.Center;
 import com.svalero.enjoypadel.domain.Player;
@@ -9,7 +10,7 @@ import com.svalero.enjoypadel.model.AddPlayerModel;
 import com.svalero.enjoypadel.view.AddCenterView;
 import com.svalero.enjoypadel.view.AddPlayerView;
 
-public class AddCenterPresenter implements AddCenterContract.Presenter {
+public class AddCenterPresenter implements AddCenterContract.Presenter, AddCenterContract.Model.OnAddCenterListener {
 
     private AddCenterModel model;
     private AddCenterView view;
@@ -20,6 +21,16 @@ public class AddCenterPresenter implements AddCenterContract.Presenter {
     }
 
     public void addCenter(Center center) {
-        model.addCenter(center);
+        model.addCenter(center, this);
+    }
+
+    @Override
+    public void onAddCenterSuccess(String message) {
+        view.showMessage(message);
+    }
+
+    @Override
+    public void onAddCenterError(String message) {
+        view.showMessage(message);
     }
 }

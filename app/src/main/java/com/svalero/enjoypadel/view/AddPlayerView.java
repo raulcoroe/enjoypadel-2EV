@@ -102,15 +102,11 @@ public class AddPlayerView extends AppCompatActivity implements AddPlayerContrac
                         (dialog, which) -> {
                             if (intent.getIntExtra("modify", 0) == 0) {
                                 presenter.addPlayer(player);
-                                finish();
-                                Toast.makeText(this, getString(R.string.player_added, name),Toast.LENGTH_SHORT).show();
-
                             } else {
                                 player.setId(intent.getIntExtra("playerId", 0));
                                 presenter.modifyPlayer(player);
-                                finish();
-                                Toast.makeText(this, getString(R.string.player_modified, name), Toast.LENGTH_SHORT).show();
                             }
+                            finish();
                         }
                 ).setNegativeButton(R.string.no,
                 (dialog, which) -> dialog.dismiss());
@@ -159,5 +155,10 @@ public class AddPlayerView extends AppCompatActivity implements AddPlayerContrac
             ImageView imageView = findViewById(R.id.player_profile);
             imageView.setImageBitmap(imageBitmap);
         }
+    }
+
+    @Override
+    public void showMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

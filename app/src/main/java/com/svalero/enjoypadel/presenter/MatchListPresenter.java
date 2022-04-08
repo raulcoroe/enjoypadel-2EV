@@ -8,7 +8,7 @@ import com.svalero.enjoypadel.view.MatchListView;
 
 import java.util.List;
 
-public class MatchListPresenter implements MatchListContract.Presenter {
+public class MatchListPresenter implements MatchListContract.Presenter, MatchListContract.Model.OnLoadMatchesListener, MatchListContract.Model.OnDeleteMatchListener {
 
     private MatchListModel model;
     private MatchListView view;
@@ -20,12 +20,31 @@ public class MatchListPresenter implements MatchListContract.Presenter {
 
     @Override
     public void loadAllMatches() {
-        List<Match> matches = model.loadAllMatches();
-        view.listAllMatches(matches);
+        model.loadAllMatches(this);
     }
 
     @Override
     public void deleteMatch(Match match) {
-        model.deleteMatch(match);
+        model.deleteMatch(match, this);
+    }
+
+    @Override
+    public void onLoadMatchesSuccess(List<Match> matches) {
+        view.listAllMatches(matches);
+    }
+
+    @Override
+    public void onLoadMatchesError(String message) {
+        view.showMessage(message);
+    }
+
+    @Override
+    public void onDeleteMatchSuccess(String message) {
+        view.showMessage(message);
+    }
+
+    @Override
+    public void onDeleteMatchError(String message) {
+        view.showMessage(message);
     }
 }

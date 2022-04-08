@@ -27,7 +27,7 @@ public interface EnjoyPadelApiInterface {
     Call<Player> findPlayerById(@Path("id") long id);
 
     @POST("players")
-    Call<Player> addPlayer(@Body Player newPlayer);
+    Call<Void> addPlayer(@Body Player newPlayer);
 
     @DELETE("player/{id}")
     Call<Void> deletePlayer(@Path("id") long id);

@@ -22,5 +22,6 @@ public interface AddMatchContract {
     interface View {
         void createMatch(android.view.View view);
         void chargeElements(List<Player> players, List<Center> centers);
+        void showMessage(String message);
     }
 }

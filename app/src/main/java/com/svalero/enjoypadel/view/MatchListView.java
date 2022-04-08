@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.svalero.enjoypadel.R;
 import com.svalero.enjoypadel.contract.MatchListContract;
@@ -130,6 +131,6 @@ public class MatchListView extends AppCompatActivity implements AdapterView.OnIt
 
     @Override
     public void showMessage(String message) {
-
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }
