@@ -2,6 +2,8 @@ package com.svalero.enjoypadel.presenter;
 
 
 import com.svalero.enjoypadel.contract.AddMatchContract;
+import com.svalero.enjoypadel.contract.CenterListContract;
+import com.svalero.enjoypadel.contract.PlayerListContract;
 import com.svalero.enjoypadel.domain.Center;
 import com.svalero.enjoypadel.domain.Match;
 import com.svalero.enjoypadel.domain.Player;
@@ -13,7 +15,7 @@ import com.svalero.enjoypadel.view.AddMatchView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddMatchPresenter implements AddMatchContract.Presenter {
+public class AddMatchPresenter implements AddMatchContract.Presenter, AddMatchContract.Model.OnAddMatchListener, AddMatchContract.Model.OnModifyMatchListener, PlayerListContract.Model.OnLoadPlayersListener, CenterListContract.Model.OnLoadCentersListener {
 
     private AddMatchModel model;
     private PlayerListModel modelPlayer;
@@ -31,19 +33,62 @@ public class AddMatchPresenter implements AddMatchContract.Presenter {
         centers = new ArrayList<>();
     }
 
+    public void loadPlayers(){
+        modelPlayer.loadAllPlayers(this);
+    }
+
+    public void loadCenters(){
+        modelCenter.loadAllCenters(this);
+    }
+
     @Override
     public void addMatch(Match match) {
-        model.addMatch(match);
+        model.addMatch(match, this);
     }
 
     @Override
     public void modifyMatch(Match match) {
-        model.modifyMatch(match);
+        model.modifyMatch(match, this);
     }
 
-    public void chargeSpinners() {
-//        players = modelPlayer.loadAllPlayers();
-//        centers = modelCenter.loadAllCenters();
-        view.chargeElements(players, centers);
+
+    @Override
+    public void onAddMatchSuccess(String message) {
+        view.showMessage(message);
+    }
+
+    @Override
+    public void onAddMatchError(String message) {
+        view.showMessage(message);
+    }
+
+    @Override
+    public void onModifyMatchSuccess(String message) {
+        view.showMessage(message);
+    }
+
+    @Override
+    public void onModifyMatchError(String message) {
+        view.showMessage(message);
+    }
+
+    @Override
+    public void onLoadPlayersSuccess(List<Player> players) {
+        view.loadPlayers(players);
+    }
+
+    @Override
+    public void onLoadPlayersError(String message) {
+        view.showMessage(message);
+    }
+
+    @Override
+    public void onLoadCentersSuccess(List<Center> centers) {
+        view.loadCenters(centers);
+    }
+
+    @Override
+    public void onLoadCentersError(String message) {
+        view.showMessage(message);
     }
 }

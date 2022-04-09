@@ -2,7 +2,10 @@ package com.svalero.enjoypadel.presenter;
 
 import com.svalero.enjoypadel.contract.PlayerListContract;
 import com.svalero.enjoypadel.domain.Player;
+import com.svalero.enjoypadel.model.CenterListModel;
 import com.svalero.enjoypadel.model.PlayerListModel;
+import com.svalero.enjoypadel.view.AddMatchView;
+import com.svalero.enjoypadel.view.MatchListView;
 import com.svalero.enjoypadel.view.PlayerListView;
 
 import java.util.List;
@@ -16,6 +19,7 @@ public class PlayerListPresenter implements PlayerListContract.Presenter, Player
         model = new PlayerListModel(view.getApplicationContext());
         this.view = view;
     }
+
 
     @Override
     public void loadAllPlayers() {

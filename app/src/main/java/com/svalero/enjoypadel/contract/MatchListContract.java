@@ -22,14 +22,14 @@ public interface MatchListContract {
 
     }
 
-    interface View {
-        void listAllMatches(List<Match> matches);
-        void showMessage(String message);
-    }
-
     interface Presenter {
         void loadAllMatches();
         void deleteMatch(Match match);
+    }
+
+    interface View {
+        void listAllMatches(List<Match> matches);
+        void showMessage(String message);
     }
 
 }

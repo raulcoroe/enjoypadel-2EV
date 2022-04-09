@@ -14,6 +14,7 @@ import retrofit2.http.Query;
 import com.svalero.enjoypadel.domain.Center;
 import com.svalero.enjoypadel.domain.Match;
 import com.svalero.enjoypadel.domain.Player;
+import com.svalero.enjoypadel.domain.dto.MatchDTO;
 
 public interface EnjoyPadelApiInterface {
 
@@ -58,7 +59,7 @@ public interface EnjoyPadelApiInterface {
     Call<Match> findMatchById(@Path("id") long id);
 
     @POST("matches")
-    Call<Match> addMatch(@Body Match match);
+    Call<Void> addMatch(@Body MatchDTO matchDTO);
 
     @DELETE("match/{id}")
     Call<Void> deleteMatch(@Path("id") long id);

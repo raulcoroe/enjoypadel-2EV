@@ -9,19 +9,28 @@ import java.util.List;
 public interface AddMatchContract {
 
     interface Model {
-        void addMatch(Match match);
-        void modifyMatch(Match match);
+
+        interface OnAddMatchListener {
+            void onAddMatchSuccess(String message);
+            void onAddMatchError(String message);
+        }
+
+        interface OnModifyMatchListener {
+            void onModifyMatchSuccess(String message);
+            void onModifyMatchError(String message);
+        }
+
+        void addMatch(Match match, OnAddMatchListener listener);
+        void modifyMatch(Match match, OnModifyMatchListener listener);
     }
 
     interface Presenter {
         void addMatch(Match match);
         void modifyMatch(Match match);
-        void chargeSpinners();
     }
 
     interface View {
         void createMatch(android.view.View view);
-        void chargeElements(List<Player> players, List<Center> centers);
         void showMessage(String message);
     }
 }

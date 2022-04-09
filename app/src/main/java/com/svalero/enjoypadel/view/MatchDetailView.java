@@ -40,13 +40,13 @@ public class MatchDetailView extends AppCompatActivity implements MatchDetailCon
         TextView locationTv = findViewById(R.id.location_view);
 
         roundTv.setText(match.getRound());
-        playerOneTv.setText(match.getPlayerOne());
-        playerTwoTv.setText(match.getPlayerTwo());
-        playerThreeTv.setText(match.getPlayerThree());
-        playerFourTv.setText(match.getPlayerFour());
+        playerOneTv.setText(match.getPlayers(0).toString());
+        playerTwoTv.setText(match.getPlayers(1).toString());
+        playerThreeTv.setText(match.getPlayers(2).toString());
+        playerFourTv.setText(match.getPlayers(3).toString());
         dateTv.setText(match.getDate());
         durationTv.setText(String.valueOf(match.getDuration()));
         scoreTv.setText(match.getMatchScore());
-        locationTv.setText(match.getSportCenter());
+        locationTv.setText(match.getSportCenter().toString());
     }
 }
