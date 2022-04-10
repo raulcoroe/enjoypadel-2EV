@@ -15,18 +15,11 @@ public interface AddMatchContract {
             void onAddMatchError(String message);
         }
 
-        interface OnModifyMatchListener {
-            void onModifyMatchSuccess(String message);
-            void onModifyMatchError(String message);
-        }
-
         void addMatch(Match match, OnAddMatchListener listener);
-        void modifyMatch(Match match, OnModifyMatchListener listener);
     }
 
     interface Presenter {
         void addMatch(Match match);
-        void modifyMatch(Match match);
     }
 
     interface View {

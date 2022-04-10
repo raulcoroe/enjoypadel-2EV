@@ -15,14 +15,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.svalero.enjoypadel.R;
 import com.svalero.enjoypadel.contract.AddMatchContract;
-import com.svalero.enjoypadel.contract.CenterListContract;
-import com.svalero.enjoypadel.contract.PlayerListContract;
 import com.svalero.enjoypadel.domain.Center;
 import com.svalero.enjoypadel.domain.Match;
 import com.svalero.enjoypadel.domain.Player;
 import com.svalero.enjoypadel.presenter.AddMatchPresenter;
-import com.svalero.enjoypadel.presenter.CenterListPresenter;
-import com.svalero.enjoypadel.presenter.PlayerListPresenter;
 import com.svalero.enjoypadel.utils.DatePickerFragment;
 
 import java.util.ArrayList;
@@ -73,12 +69,12 @@ public class AddMatchView extends AppCompatActivity implements AddMatchContract.
         date = findViewById(R.id.match_date);
     }
 
-    public void loadPlayers(List<Player> players){
+    public void loadPlayers(List<Player> players) {
         playerList = players;
         chargeElements();
     }
 
-    public void loadCenters(List<Center> centers){
+    public void loadCenters(List<Center> centers) {
         centerList = centers;
         chargeElements();
     }
@@ -156,7 +152,6 @@ public class AddMatchView extends AppCompatActivity implements AddMatchContract.
     }
 
     public void createMatch(View view) {
-        Intent intent = getIntent();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.sure)
@@ -175,26 +170,16 @@ public class AddMatchView extends AppCompatActivity implements AddMatchContract.
                                 } else {
                                     match.setDuration(Integer.parseInt(duration.getText().toString()));
                                 }
-                                match.getPlayers().add(playerOne);
-                                match.getPlayers().add(playerTwo);
-                                match.getPlayers().add(playerThree);
-                                match.getPlayers().add(playerFour);
-                                match.setSportCenter(location);
-                            }
 
-                            if (intent.getIntExtra("modify", 0) == 0) {
+                                Player[] players = new Player[]{playerOne, playerTwo, playerThree, playerFour};
+                                match.setPlayers(players);
+                                match.setCenter(location);
                                 presenter.addMatch(match);
-                                Toast.makeText(this, R.string.match_added, Toast.LENGTH_SHORT).show();
-                            } else {
-                                int matchId = intent.getIntExtra("matchId", 0);
-                                match.setId(matchId);
-                                presenter.modifyMatch(match);
-                                Toast.makeText(this, getString(R.string.match_modified), Toast.LENGTH_SHORT).show();
+                                finish();
                             }
-                            finish();
                         }
                 ).setNegativeButton(R.string.no,
-                        (dialog, which) -> dialog.dismiss());
+                (dialog, which) -> dialog.dismiss());
         builder.create().
                 show();
     }

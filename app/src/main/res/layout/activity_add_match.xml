@@ -35,15 +35,6 @@
                 android:layout_marginBottom="15dp"
                 android:background="?android:attr/listDivider" />
 
-            <TextView
-                android:id="@+id/team_one"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginTop="10dp"
-                android:text="@string/team_1"
-                android:textAlignment="center"
-                android:textSize="16sp" />
-
             <Spinner
                 android:id="@+id/spinner_one"
                 android:layout_width="match_parent"
@@ -57,23 +48,6 @@
                 android:layout_height="35dp"
                 android:layout_marginTop="8dp"
                 android:spinnerMode="dialog" />
-
-            <View
-                android:id="@+id/divider6"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
-                android:background="?android:attr/listDivider" />
-
-            <TextView
-                android:id="@+id/team_two"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginTop="10dp"
-                android:text="@string/team_2"
-                android:textAlignment="center"
-                android:textSize="16sp" />
 
             <Spinner
                 android:id="@+id/spinner_three"

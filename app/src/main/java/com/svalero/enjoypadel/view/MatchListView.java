@@ -53,6 +53,7 @@ public class MatchListView extends AppCompatActivity implements AdapterView.OnIt
         super.onResume();
 
         presenter.loadAllMatches();
+
     }
 
     @Override
@@ -69,48 +70,6 @@ public class MatchListView extends AppCompatActivity implements AdapterView.OnIt
             return true;
         }
         return false;
-    }
-
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-
-        getMenuInflater().inflate(R.menu.contextual_menu, menu);
-    }
-
-    @Override
-    public boolean onContextItemSelected(@NonNull MenuItem item) {
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        Match match = matchList.get(info.position);
-
-        switch (item.getItemId()) {
-            case R.id.action_delete:
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage(R.string.sure)
-                        .setPositiveButton(R.string.yes,
-                                (dialog, which) -> {
-                                    presenter.deleteMatch(match);
-                                    matchList.remove(match);
-                                    matchesAdapter.notifyDataSetChanged();
-                                }
-                        ).setNegativeButton(R.string.no,
-                        (dialog, which) -> dialog.dismiss());
-                builder.create().show();
-                return true;
-
-
-            case R.id.action_edit:
-                Intent intent = new Intent(this, AddMatchView.class);
-                intent.putExtra("round", match.getRound());
-                intent.putExtra("duration", match.getDuration());
-                intent.putExtra("date", match.getDate());
-                intent.putExtra("matchScore", match.getMatchScore());
-                intent.putExtra("matchId", match.getId());
-                intent.putExtra("modify", 1);
-                startActivity(intent);
-                return true;
-        }
-        return super.onContextItemSelected(item);
     }
 
     @Override

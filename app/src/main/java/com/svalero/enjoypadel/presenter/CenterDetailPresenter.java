@@ -5,7 +5,7 @@ import com.svalero.enjoypadel.domain.Center;
 import com.svalero.enjoypadel.model.CenterDetailModel;
 import com.svalero.enjoypadel.view.CenterDetailView;
 
-public class CenterDetailPresenter implements CenterDetailContract.Presenter {
+public class CenterDetailPresenter implements CenterDetailContract.Presenter, CenterDetailContract.Model.OnShowCenter {
 
     private CenterDetailModel model;
     private CenterDetailView view;
@@ -17,7 +17,16 @@ public class CenterDetailPresenter implements CenterDetailContract.Presenter {
 
     @Override
     public void centerDetail(int centerId) {
-        Center center = model.centerDetail(centerId);
+        model.centerDetail(centerId, this);
+    }
+
+    @Override
+    public void onShowCenterSuccess(Center center) {
         view.loadCenterDetail(center);
+    }
+
+    @Override
+    public void onShowCenterError(String message) {
+        view.showMessage(message);
     }
 }

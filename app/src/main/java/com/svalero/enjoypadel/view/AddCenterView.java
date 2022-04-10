@@ -70,7 +70,7 @@ public class AddCenterView extends AppCompatActivity implements OnMapReadyCallba
         TextView nameCenterTv = findViewById(R.id.center_name);
         Center center = new Center();
 
-        if (nameCenterTv.getText().toString().equals("")){
+        if (nameCenterTv.getText().toString().equals("") || location == null){
             Toast.makeText(this, R.string.must_center_name, Toast.LENGTH_SHORT).show();
         } else {
             center.setName(nameCenterTv.getText().toString());

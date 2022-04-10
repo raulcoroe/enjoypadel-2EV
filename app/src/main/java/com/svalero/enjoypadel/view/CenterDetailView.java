@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -32,16 +33,11 @@ public class CenterDetailView extends AppCompatActivity implements OnMapReadyCal
         setContentView(R.layout.activity_center_detail);
 
         presenter = new CenterDetailPresenter(this);
-
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_center_view);
-        if (mapFragment != null)
-            mapFragment.getMapAsync(this);
-
         Intent intent = getIntent();
         int centerId = intent.getIntExtra("centerId" ,0);
         presenter.centerDetail(centerId);
-    }
 
+    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -64,9 +60,17 @@ public class CenterDetailView extends AppCompatActivity implements OnMapReadyCal
 
     @Override
     public void loadCenterDetail(Center center) {
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_center_view);
+        if (mapFragment != null)
+            mapFragment.getMapAsync(this);
         location = new LatLng(Double.parseDouble(center.getLatitude()), Double.parseDouble(center.getLongitude()));
         name = center.getName();
         TextView nameTv = findViewById(R.id.center_name_view);
         nameTv.setText(name);
+    }
+
+    @Override
+    public void showMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

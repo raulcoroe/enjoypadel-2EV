@@ -44,7 +44,7 @@ public interface EnjoyPadelApiInterface {
     Call<Center> findCenterById(@Path("id") long id);
 
     @POST("centers")
-    Call<Center> addCenter(@Body Center center);
+    Call<Void> addCenter(@Body Center center);
 
     @DELETE("center/{id}")
     Call<Void> deleteCenter(@Path("id") long id);
@@ -65,6 +65,6 @@ public interface EnjoyPadelApiInterface {
     Call<Void> deleteMatch(@Path("id") long id);
 
     @PUT("match/{id}")
-    Call<Match> modifyMatch(@Path("id") long id, @Body Match match);
+    Call<Match> modifyMatch(@Path("id") long id, @Body MatchDTO matchDTO);
 
 }

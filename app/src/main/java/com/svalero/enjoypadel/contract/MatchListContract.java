@@ -12,19 +12,11 @@ public interface MatchListContract {
             void onLoadMatchesError(String message);
         }
 
-        interface OnDeleteMatchListener {
-            void onDeleteMatchSuccess(String message);
-            void onDeleteMatchError(String message);
-        }
-
         void loadAllMatches(OnLoadMatchesListener listener);
-        void deleteMatch(Match match, OnDeleteMatchListener listener);
-
     }
 
     interface Presenter {
         void loadAllMatches();
-        void deleteMatch(Match match);
     }
 
     interface View {

@@ -2,6 +2,7 @@ package com.svalero.enjoypadel.domain;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.svalero.enjoypadel.R;
@@ -21,6 +22,8 @@ import com.svalero.enjoypadel.R;
     private boolean availability;
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
     private byte[] image;
+    @Ignore
+    private Match[] matches;
 
     public Player(String name, String surname, String level, boolean availability, byte[] image) {
         this.name = name;
@@ -28,6 +31,7 @@ import com.svalero.enjoypadel.R;
         this.level = level;
         this.availability = availability;
         this.image = image;
+        matches = new Match [4];
     }
 
     public String availabilityString(boolean availability){

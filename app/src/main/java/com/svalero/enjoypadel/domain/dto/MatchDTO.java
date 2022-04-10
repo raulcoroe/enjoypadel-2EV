@@ -6,11 +6,11 @@ public class MatchDTO {
     private int duration;
     private String date;
     private String matchScore;
-    private long player1Id;
-    private long player2Id;
-    private long player3Id;
-    private long player4Id;
-    private long centerId;
+    private long player1;
+    private long player2;
+    private long player3;
+    private long player4;
+    private long center;
 
     public MatchDTO() {
     }
@@ -20,11 +20,11 @@ public class MatchDTO {
         this.duration = duration;
         this.date = date;
         this.matchScore = matchScore;
-        this.player1Id = player1Id;
-        this.player2Id = player2Id;
-        this.player3Id = player3Id;
-        this.player4Id = player4Id;
-        this.centerId = centerId;
+        this.player1 = player1Id;
+        this.player2 = player2Id;
+        this.player3 = player3Id;
+        this.player4 = player4Id;
+        this.center = centerId;
     }
 
     public String getRound() {
@@ -59,43 +59,43 @@ public class MatchDTO {
         this.matchScore = matchScore;
     }
 
-    public long getPlayer1Id() {
-        return player1Id;
+    public long getPlayer1() {
+        return player1;
     }
 
-    public void setPlayer1Id(long player1Id) {
-        this.player1Id = player1Id;
+    public void setPlayer1(long player1) {
+        this.player1 = player1;
     }
 
-    public long getPlayer2Id() {
-        return player2Id;
+    public long getPlayer2() {
+        return player2;
     }
 
-    public void setPlayer2Id(long player2Id) {
-        this.player2Id = player2Id;
+    public void setPlayer2(long player2) {
+        this.player2 = player2;
     }
 
-    public long getPlayer3Id() {
-        return player3Id;
+    public long getPlayer3() {
+        return player3;
     }
 
-    public void setPlayer3Id(long player3Id) {
-        this.player3Id = player3Id;
+    public void setPlayer3(long player3) {
+        this.player3 = player3;
     }
 
-    public long getPlayer4Id() {
-        return player4Id;
+    public long getPlayer4() {
+        return player4;
     }
 
-    public void setPlayer4Id(long player4Id) {
-        this.player4Id = player4Id;
+    public void setPlayer4(long player4) {
+        this.player4 = player4;
     }
 
-    public long getCenterId() {
-        return centerId;
+    public long getCenter() {
+        return center;
     }
 
-    public void setCenterId(long centerId) {
-        this.centerId = centerId;
+    public void setCenter(long center) {
+        this.center = center;
     }
 }

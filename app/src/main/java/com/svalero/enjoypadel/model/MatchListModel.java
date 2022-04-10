@@ -26,12 +26,8 @@ public class MatchListModel implements MatchListContract.Model {
     public MatchListModel(Context applicationContext) {
         this.context = applicationContext;
 
-        db = Room.databaseBuilder(context,
-                AppDatabase.class, "tournament").allowMainThreadQueries()
-                .fallbackToDestructiveMigration().build();
         api = EnjoyPadelApi.buildInstance();
     }
-
 
     @Override
     public void loadAllMatches(OnLoadMatchesListener listener) {
@@ -49,23 +45,6 @@ public class MatchListModel implements MatchListContract.Model {
             }
         });
         api.getMatches();
-    }
-
-
-    @Override
-    public void deleteMatch(Match match, OnDeleteMatchListener listener) {
-        Call<Void> callMatches = api.deleteMatch(match.getId());
-        callMatches.enqueue(new Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                listener.onDeleteMatchSuccess("Partido eliminado");
-            }
-
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                listener.onDeleteMatchError("El partido no se ha podido eliminar");
-            }
-        });
     }
 
 }

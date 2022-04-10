@@ -5,11 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.svalero.enjoypadel.R;
 import com.svalero.enjoypadel.contract.MatchDetailContract;
 import com.svalero.enjoypadel.domain.Match;
+import com.svalero.enjoypadel.domain.Player;
 import com.svalero.enjoypadel.presenter.MatchDetailPresenter;
+
+import java.util.Objects;
 
 public class MatchDetailView extends AppCompatActivity implements MatchDetailContract.View {
 
@@ -40,13 +44,26 @@ public class MatchDetailView extends AppCompatActivity implements MatchDetailCon
         TextView locationTv = findViewById(R.id.location_view);
 
         roundTv.setText(match.getRound());
-        playerOneTv.setText(match.getPlayers(0).toString());
-        playerTwoTv.setText(match.getPlayers(1).toString());
-        playerThreeTv.setText(match.getPlayers(2).toString());
-        playerFourTv.setText(match.getPlayers(3).toString());
+
+        Player [] players = match.getPlayers();
+
+        playerOneTv.setText(players[0].toString());
+        playerTwoTv.setText(players[1].toString());
+        playerThreeTv.setText(players[2].toString());
+        playerFourTv.setText(players[3].toString());
+
+        if (match.getCenter() == null) {
+            locationTv.setText("Centro deportivo eliminado");
+        } else {
+            locationTv.setText(match.getCenter().toString());
+        }
         dateTv.setText(match.getDate());
         durationTv.setText(String.valueOf(match.getDuration()));
         scoreTv.setText(match.getMatchScore());
-        locationTv.setText(match.getSportCenter().toString());
+    }
+
+    @Override
+    public void showMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

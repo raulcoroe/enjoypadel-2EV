@@ -15,7 +15,7 @@ import com.svalero.enjoypadel.view.AddMatchView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddMatchPresenter implements AddMatchContract.Presenter, AddMatchContract.Model.OnAddMatchListener, AddMatchContract.Model.OnModifyMatchListener, PlayerListContract.Model.OnLoadPlayersListener, CenterListContract.Model.OnLoadCentersListener {
+public class AddMatchPresenter implements AddMatchContract.Presenter, AddMatchContract.Model.OnAddMatchListener, PlayerListContract.Model.OnLoadPlayersListener, CenterListContract.Model.OnLoadCentersListener {
 
     private AddMatchModel model;
     private PlayerListModel modelPlayer;
@@ -42,14 +42,10 @@ public class AddMatchPresenter implements AddMatchContract.Presenter, AddMatchCo
     }
 
     @Override
-    public void addMatch(Match match) {
+    public void addMatch(Match match){
         model.addMatch(match, this);
     }
 
-    @Override
-    public void modifyMatch(Match match) {
-        model.modifyMatch(match, this);
-    }
 
 
     @Override
@@ -62,15 +58,6 @@ public class AddMatchPresenter implements AddMatchContract.Presenter, AddMatchCo
         view.showMessage(message);
     }
 
-    @Override
-    public void onModifyMatchSuccess(String message) {
-        view.showMessage(message);
-    }
-
-    @Override
-    public void onModifyMatchError(String message) {
-        view.showMessage(message);
-    }
 
     @Override
     public void onLoadPlayersSuccess(List<Player> players) {

@@ -1,6 +1,7 @@
 package com.svalero.enjoypadel.model;
 
 import android.content.Context;
+import android.os.StrictMode;
 
 import androidx.room.Room;
 
@@ -12,6 +13,8 @@ import com.svalero.enjoypadel.database.AppDatabase;
 import com.svalero.enjoypadel.domain.Center;
 import com.svalero.enjoypadel.domain.Player;
 import com.svalero.enjoypadel.view.AddPlayerView;
+
+import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,20 +32,25 @@ public class AddCenterModel implements AddCenterContract.Model {
         db = Room.databaseBuilder(context,
                 AppDatabase.class, "tournament").allowMainThreadQueries().build();
         api = EnjoyPadelApi.buildInstance();
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
     }
 
     @Override
     public void addCenter(Center center, OnAddCenterListener listener) {
-        api.addCenter(center).enqueue(new Callback<Center>() {
-            @Override
-            public void onResponse(Call<Center> call, Response<Center> response) {
-                listener.onAddCenterSuccess("Centro deportivo añadido");
-            }
 
-            @Override
-            public void onFailure(Call<Center> call, Throwable t) {
-                listener.onAddCenterError("No se ha podido añadir un centro");
-            }
-        });
+        Call<Void> call = api.addCenter(center);
+        try {
+            call.execute();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (call.isExecuted()){
+            listener.onAddCenterSuccess("Centro deportivo añadido");
+        } else {
+            listener.onAddCenterError("El centro deportivo no se ha podido añadir");
+        }
     }
 }

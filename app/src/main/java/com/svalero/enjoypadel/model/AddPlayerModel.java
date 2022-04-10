@@ -1,5 +1,7 @@
 package com.svalero.enjoypadel.model;
 
+import android.os.StrictMode;
+
 import androidx.room.Room;
 
 import com.svalero.enjoypadel.api.EnjoyPadelApi;
@@ -8,6 +10,8 @@ import com.svalero.enjoypadel.contract.AddPlayerContract;
 import com.svalero.enjoypadel.database.AppDatabase;
 import com.svalero.enjoypadel.domain.Player;
 import com.svalero.enjoypadel.view.AddPlayerView;
+
+import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,35 +29,43 @@ public class AddPlayerModel implements AddPlayerContract.Model {
         db = Room.databaseBuilder(view.getApplicationContext(),
                 AppDatabase.class, "tournament").allowMainThreadQueries().build();
         api = EnjoyPadelApi.buildInstance();
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
     }
 
     @Override
     public void addPlayer(Player player, OnAddPlayerListener listener) {
-        api.addPlayer(player).enqueue(new Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                listener.onAddPlayerSuccess("Jugador añadido");
-            }
 
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                listener.onAddPlayerError("El jugador no ha sido añadido");
-            }
-        });
+        Call<Void> call = api.addPlayer(player);
+        try {
+            call.execute();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (call.isExecuted()){
+            listener.onAddPlayerSuccess("Jugador añadido");
+        } else {
+            listener.onAddPlayerError("El jugador no se ha podido añadir");
+        }
+
     }
 
     @Override
     public void modifyPlayer(Player player, OnModifyPlayerListener listener) {
-        api.modifyPlayer(player.getId(), player).enqueue(new Callback<Player>() {
-            @Override
-            public void onResponse(Call<Player> call, Response<Player> response) {
-                listener.onModifyPlayerSuccess("Jugador modificado");
-            }
 
-            @Override
-            public void onFailure(Call<Player> call, Throwable t) {
-                listener.onModifyPlayerError("El jugador no ha sido modificado");
-            }
-        });
+        Call<Player> call = api.modifyPlayer(player.getId(), player);
+        try {
+            call.execute();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (call.isExecuted()){
+            listener.onModifyPlayerSuccess("Jugador añadido");
+        } else {
+            listener.onModifyPlayerError("El jugador no se ha podido añadir");
+        }
     }
 }

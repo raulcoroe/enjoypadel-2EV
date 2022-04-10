@@ -5,7 +5,12 @@ import com.svalero.enjoypadel.domain.Center;
 public interface CenterDetailContract {
 
     interface Model {
-        Center centerDetail(int centerId);
+        interface OnShowCenter {
+            void onShowCenterSuccess(Center center);
+            void onShowCenterError(String message);
+        }
+
+        void centerDetail(int centerId, OnShowCenter listener);
     }
 
     interface Presenter {
@@ -14,5 +19,7 @@ public interface CenterDetailContract {
 
     interface View {
         void loadCenterDetail(Center center);
+        void showMessage(String message);
+
     }
 }

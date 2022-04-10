@@ -5,13 +5,8 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-import com.svalero.enjoypadel.R;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.http.Body;
 
 @Entity
 public class Match {
@@ -26,25 +21,21 @@ public class Match {
     @ColumnInfo
     private String matchScore;
     @Ignore
-    private Center sportCenter;
+    private Center center;
 
     @Ignore
-    private List<Player> players;
+    private Player[] players;
 
 
     public Match() {
-        players = new ArrayList<>();
+        players = new Player[4];
     }
 
-    public Player getPlayers(int position) {
-        return players.get(position);
-    }
-
-    public List<Player> getPlayers() {
+    public Player[] getPlayers() {
         return players;
     }
 
-    public void setPlayers(List<Player> players) {
+    public void setPlayers(Player[] players) {
         this.players = players;
     }
 
@@ -88,12 +79,12 @@ public class Match {
         this.matchScore = matchScore;
     }
 
-    public Center getSportCenter() {
-        return sportCenter;
+    public Center getCenter() {
+        return center;
     }
 
-    public void setSportCenter(Center sportCenter) {
-        this.sportCenter = sportCenter;
+    public void setCenter(Center center) {
+        this.center = center;
     }
 
     @Override
