@@ -15,10 +15,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import com.svalero.enjoypadel.R;
 import com.svalero.enjoypadel.adapter.PlayerAdapter;
 import com.svalero.enjoypadel.contract.PlayerListContract;
+import com.svalero.enjoypadel.database.AppDatabase;
 import com.svalero.enjoypadel.domain.Player;
 import com.svalero.enjoypadel.presenter.PlayerListPresenter;
 
@@ -40,7 +42,7 @@ public class PlayerListView extends AppCompatActivity implements PlayerListContr
         initialize();
     }
 
-    public void initialize(){
+    public void initialize() {
         playerList = new ArrayList<>();
         ListView lvPlayers = findViewById(R.id.player_list);
         playerAdapter = new PlayerAdapter(this, playerList);
@@ -75,6 +77,18 @@ public class PlayerListView extends AppCompatActivity implements PlayerListContr
             return true;
         }
 
+        if (item.getItemId() == R.id.favoritos) {
+
+            AppDatabase db = Room.databaseBuilder(getApplicationContext(),
+                    AppDatabase.class, "tournament").allowMainThreadQueries()
+                    .fallbackToDestructiveMigration().build();
+
+            playerList.clear();
+            playerList.addAll(db.playerDao().getAll());
+            playerAdapter.notifyDataSetChanged();
+            return true;
+        }
+
         return false;
     }
 
@@ -87,7 +101,7 @@ public class PlayerListView extends AppCompatActivity implements PlayerListContr
         boolean removeDelete = preferencias.getBoolean("restrict", false);
 
         if (!removeDelete)
-        getMenuInflater().inflate(R.menu.contextual_menu, menu);
+            getMenuInflater().inflate(R.menu.contextual_menu, menu);
     }
 
 
@@ -123,6 +137,16 @@ public class PlayerListView extends AppCompatActivity implements PlayerListContr
                 intent.putExtra("playerId", player.getId());
                 startActivity(intent);
                 return true;
+            case R.id.action_fav:
+                AppDatabase db = Room.databaseBuilder(getApplicationContext(),
+                        AppDatabase.class, "tournament").allowMainThreadQueries()
+                        .fallbackToDestructiveMigration().build();
+
+                if (db.playerDao().findById(player.getId()) == null) {
+                    db.playerDao().insert(player);
+                } else {
+                    showMessage("El jugador ya está en favoritos");
+                }
         }
         return super.onContextItemSelected(item);
     }

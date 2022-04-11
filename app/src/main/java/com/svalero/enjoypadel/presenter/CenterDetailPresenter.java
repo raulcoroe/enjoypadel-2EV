@@ -29,4 +29,6 @@ public class CenterDetailPresenter implements CenterDetailContract.Presenter, Ce
     public void onShowCenterError(String message) {
         view.showMessage(message);
     }
+
+
 }

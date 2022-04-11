@@ -8,6 +8,9 @@
         android:title="@string/add_player"
         app:showAsAction="always" />
     <item
+        android:id="@+id/favoritos"
+        android:title="Favoritos" />
+    <item
         android:id="@+id/preferences"
         android:title="@string/preferences" />
 </menu>

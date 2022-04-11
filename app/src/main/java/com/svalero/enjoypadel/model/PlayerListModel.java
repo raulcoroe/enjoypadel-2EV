@@ -72,6 +72,7 @@ public class PlayerListModel implements PlayerListContract.Model {
 
     @Override
     public void deletePlayer(Player player, OnDeletePlayerListener listener){
+
         Call<Void> callPlayers = api.deletePlayer(player.getId());
         callPlayers.enqueue(new Callback<Void>() {
             @Override
