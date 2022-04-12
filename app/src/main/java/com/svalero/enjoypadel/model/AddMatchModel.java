@@ -51,7 +51,7 @@ public class AddMatchModel implements AddMatchContract.Model {
         matchDTO.setPlayer4(players.get(3).getId());
         matchDTO.setCenter(match.getCenter().getId());
 
-        Call<Void> call = api.addMatch(matchDTO);
+        Call<Match> call = api.addMatch(matchDTO);
         try {
             call.execute();
         } catch (IOException e) {

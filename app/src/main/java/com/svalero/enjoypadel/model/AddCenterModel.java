@@ -40,7 +40,7 @@ public class AddCenterModel implements AddCenterContract.Model {
     @Override
     public void addCenter(Center center, OnAddCenterListener listener) {
 
-        Call<Void> call = api.addCenter(center);
+        Call<Center> call = api.addCenter(center);
         try {
             call.execute();
         } catch (IOException e) {

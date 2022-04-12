@@ -45,12 +45,40 @@ public class MatchDetailView extends AppCompatActivity implements MatchDetailCon
 
         roundTv.setText(match.getRound());
 
-        Player [] players = match.getPlayers();
+        Player[] players = match.getPlayers();
 
-        playerOneTv.setText(players[0].toString());
-        playerTwoTv.setText(players[1].toString());
-        playerThreeTv.setText(players[2].toString());
-        playerFourTv.setText(players[3].toString());
+        if (players.length == 4) {
+            playerOneTv.setText(players[0].toString());
+            playerTwoTv.setText(players[1].toString());
+            playerThreeTv.setText(players[2].toString());
+            playerFourTv.setText(players[3].toString());
+        } else {
+            if (players.length == 3) {
+                playerOneTv.setText(players[0].toString());
+                playerTwoTv.setText(players[1].toString());
+                playerThreeTv.setText(players[2].toString());
+                playerFourTv.setText("Jugador eliminado");
+            } else {
+                if (players.length == 2) {
+                    playerOneTv.setText(players[0].toString());
+                    playerTwoTv.setText(players[1].toString());
+                    playerThreeTv.setText("Jugador eliminado");
+                    playerFourTv.setText("Jugador eliminado");
+                } else {
+                    if (players.length == 1) {
+                        playerOneTv.setText(players[0].toString());
+                        playerTwoTv.setText("Jugador eliminado");
+                        playerThreeTv.setText("Jugador eliminado");
+                        playerFourTv.setText("Jugador eliminado");
+                    } else {
+                        playerOneTv.setText("Jugador eliminado");
+                        playerTwoTv.setText("Jugador eliminado");
+                        playerThreeTv.setText("Jugador eliminado");
+                        playerFourTv.setText("Jugador eliminado");
+                    }
+                }
+            }
+        }
 
         if (match.getCenter() == null) {
             locationTv.setText("Centro deportivo eliminado");

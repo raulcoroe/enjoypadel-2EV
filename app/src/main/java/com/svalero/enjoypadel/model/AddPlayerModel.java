@@ -37,7 +37,7 @@ public class AddPlayerModel implements AddPlayerContract.Model {
     @Override
     public void addPlayer(Player player, OnAddPlayerListener listener) {
 
-        Call<Void> call = api.addPlayer(player);
+        Call<Player> call = api.addPlayer(player);
         try {
             call.execute();
         } catch (IOException e) {

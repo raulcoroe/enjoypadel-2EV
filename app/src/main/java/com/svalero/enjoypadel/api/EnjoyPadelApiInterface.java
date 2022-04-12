@@ -18,6 +18,7 @@ import com.svalero.enjoypadel.domain.dto.MatchDTO;
 
 public interface EnjoyPadelApiInterface {
 
+    //Players
     @GET("players")
     Call<List<Player>> getPlayers();
 
@@ -28,7 +29,7 @@ public interface EnjoyPadelApiInterface {
     Call<Player> findPlayerById(@Path("id") long id);
 
     @POST("players")
-    Call<Void> addPlayer(@Body Player newPlayer);
+    Call<Player> addPlayer(@Body Player newPlayer);
 
     @DELETE("player/{id}")
     Call<Void> deletePlayer(@Path("id") long id);
@@ -37,6 +38,7 @@ public interface EnjoyPadelApiInterface {
     Call<Player> modifyPlayer(@Path("id") long id, @Body Player player);
 
 
+    //Centers
     @GET("centers")
     Call<List<Center>> getCenters();
 
@@ -44,7 +46,7 @@ public interface EnjoyPadelApiInterface {
     Call<Center> findCenterById(@Path("id") long id);
 
     @POST("centers")
-    Call<Void> addCenter(@Body Center center);
+    Call<Center> addCenter(@Body Center center);
 
     @DELETE("center/{id}")
     Call<Void> deleteCenter(@Path("id") long id);
@@ -52,6 +54,8 @@ public interface EnjoyPadelApiInterface {
     @PUT("center/{id}")
     Call<Center> modifyCenter(@Path("id") long id, @Body Center center);
 
+
+    //Matches
     @GET("matches")
     Call<List<Match>> getMatches();
 
@@ -59,7 +63,7 @@ public interface EnjoyPadelApiInterface {
     Call<Match> findMatchById(@Path("id") long id);
 
     @POST("matches")
-    Call<Void> addMatch(@Body MatchDTO matchDTO);
+    Call<Match> addMatch(@Body MatchDTO matchDTO);
 
     @DELETE("match/{id}")
     Call<Void> deleteMatch(@Path("id") long id);
