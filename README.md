@@ -2,8 +2,6 @@
 ## Se trada de una aplicación que permite gestionar los partidos de un torneo de padel
 ### - La aplicación deberá consumir la API diseñada y desarrollada en la asignatura de Acceso a Datos. Al menos 2 operaciones de cada uno de estos métodos: POST, GET, PUT y DELETE. Al menos una de ellas permitirá listar información
 #### En todas las clases podemos listar y añadir información mediante GET y POST, tambíen podremos eliminar jugadores y centros deportivos mediante DELETE y modificar jugadores mediante PUT.
-#### Se añaden unas preferencias para personalizar la visualización de la lista de jugadores
-#### Se incorporan herramientas de elección o toma de fotos para la imagen del usuario
 ### - La comunicación con la API se llevará a cabo utilizando Retrofit y RxJava
 #### La aplicación se comunica mediantre Retrofit y RxJava de forma reactiva
 ### - Se hará uso de mapas para mostrar información (si es necesario, añadir información geográfica a alguno de los recursos de la API diseñada)
