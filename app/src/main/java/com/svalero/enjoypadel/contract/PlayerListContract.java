@@ -1,7 +1,5 @@
 package com.svalero.enjoypadel.contract;
 
-import android.content.Context;
-
 import com.svalero.enjoypadel.domain.Player;
 
 import java.util.List;
@@ -9,18 +7,18 @@ import java.util.List;
 public interface PlayerListContract {
 
     interface Model {
-//        interface OnLoadPlayersListener {
-//            void onLoadPlayersSuccess(List<Player> players);
-//            void onLoadPlayersError(String message);
-//        }
-//
-//        interface OnDeletePlayerListener {
-//            void onDeletePlayerSuccess(String message);
-//            void onDeletePlayerError(String message);
-//        }
+        interface OnLoadPlayersListener {
+            void onLoadPlayersSuccess(List<Player> players);
+            void onLoadPlayersError(String message);
+        }
 
-        List<Player> loadAllPlayers();
-        void deletePlayer(Player player);
+        interface OnDeletePlayerListener {
+            void onDeletePlayerSuccess(String message);
+            void onDeletePlayerError(String message);
+        }
+
+        void loadAllPlayers(OnLoadPlayersListener listener);
+        void deletePlayer(Player player, OnDeletePlayerListener listener);
 
     }
 

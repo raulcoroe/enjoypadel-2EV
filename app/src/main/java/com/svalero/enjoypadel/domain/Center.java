@@ -4,10 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.google.android.gms.maps.model.LatLng;
-
 @Entity
-public class SportCenter {
+public class Center {
     @PrimaryKey(autoGenerate = true)
     private int id;
     @ColumnInfo
@@ -17,7 +15,7 @@ public class SportCenter {
     @ColumnInfo
     private String latitude;
 
-    public SportCenter() {
+    public Center() {
     }
 
     public int getId() {

@@ -1,4 +1,4 @@
-package com.svalero.enjoypadel.acitivities;
+package com.svalero.enjoypadel.view;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,36 +8,44 @@ import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
-import android.widget.AdapterView.AdapterContextMenuInfo;
-
 import com.svalero.enjoypadel.R;
 import com.svalero.enjoypadel.adapter.PlayerAdapter;
+import com.svalero.enjoypadel.contract.PlayerListContract;
 import com.svalero.enjoypadel.database.AppDatabase;
 import com.svalero.enjoypadel.domain.Player;
+import com.svalero.enjoypadel.presenter.PlayerListPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerActivity extends AppCompatActivity {
+public class PlayerListView extends AppCompatActivity implements PlayerListContract.View {
 
-    private List<Player> players;
+    private List<Player> playerList;
     private PlayerAdapter playerAdapter;
+    private PlayerListPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
 
-        players = new ArrayList<>();
+        presenter = new PlayerListPresenter(this);
+        initialize();
+    }
+
+    public void initialize() {
+        playerList = new ArrayList<>();
         ListView lvPlayers = findViewById(R.id.player_list);
-        playerAdapter = new PlayerAdapter(this, players);
+        playerAdapter = new PlayerAdapter(this, playerList);
         lvPlayers.setAdapter(playerAdapter);
         registerForContextMenu(lvPlayers);
     }
@@ -46,29 +54,7 @@ public class PlayerActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        players.clear();
-        AppDatabase db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "tournament").allowMainThreadQueries()
-                .fallbackToDestructiveMigration().build();
-
-        SharedPreferences preferencias = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean available = preferencias.getBoolean("available_players", false);
-        boolean hideSurname = preferencias.getBoolean("hide_surname", false);
-        players.addAll(db.playerDao().getAll());
-
-        if (available) {
-            players.clear();
-            players.addAll(db.playerDao().getAvailablePlayers());
-        }
-
-        if (hideSurname) {
-            for (Player player : players) {
-                player.setSurname("");
-            }
-        }
-        playerAdapter.notifyDataSetChanged();
-
-
+        presenter.loadAllPlayers();
     }
 
     @Override
@@ -80,14 +66,26 @@ public class PlayerActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.add_player) {
-            Intent intent = new Intent(this, AddPlayerActivity.class);
+            Intent intent = new Intent(this, AddPlayerView.class);
             startActivity(intent);
             return true;
         }
 
         if (item.getItemId() == R.id.preferences) {
-            Intent intent = new Intent(this, Preferences.class);
+            Intent intent = new Intent(this, PreferenceView.class);
             startActivity(intent);
+            return true;
+        }
+
+        if (item.getItemId() == R.id.favoritos) {
+
+            AppDatabase db = Room.databaseBuilder(getApplicationContext(),
+                    AppDatabase.class, "tournament").allowMainThreadQueries()
+                    .fallbackToDestructiveMigration().build();
+
+            playerList.clear();
+            playerList.addAll(db.playerDao().getAll());
+            playerAdapter.notifyDataSetChanged();
             return true;
         }
 
@@ -103,14 +101,14 @@ public class PlayerActivity extends AppCompatActivity {
         boolean removeDelete = preferencias.getBoolean("restrict", false);
 
         if (!removeDelete)
-        getMenuInflater().inflate(R.menu.contextual_menu, menu);
+            getMenuInflater().inflate(R.menu.contextual_menu, menu);
     }
 
 
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
-        Player player = players.get(info.position);
+        Player player = playerList.get(info.position);
 
         switch (item.getItemId()) {
             case R.id.action_delete:
@@ -118,11 +116,8 @@ public class PlayerActivity extends AppCompatActivity {
                 builder.setMessage(R.string.sure)
                         .setPositiveButton(R.string.yes,
                                 (dialog, which) -> {
-                                    AppDatabase db = Room.databaseBuilder(getApplicationContext(),
-                                            AppDatabase.class, "tournament").allowMainThreadQueries()
-                                            .fallbackToDestructiveMigration().build();
-                                    db.playerDao().delete(player);
-                                    players.remove(player);
+                                    presenter.deletePlayer(player);
+                                    playerList.remove(player);
                                     playerAdapter.notifyDataSetChanged();
                                 }
                         ).setNegativeButton(R.string.no,
@@ -132,7 +127,7 @@ public class PlayerActivity extends AppCompatActivity {
 
 
             case R.id.action_edit:
-                Intent intent = new Intent(this, AddPlayerActivity.class);
+                Intent intent = new Intent(this, AddPlayerView.class);
                 intent.putExtra("name", player.getName());
                 intent.putExtra("surname", player.getSurname());
                 intent.putExtra("level", player.getLevel());
@@ -142,7 +137,29 @@ public class PlayerActivity extends AppCompatActivity {
                 intent.putExtra("playerId", player.getId());
                 startActivity(intent);
                 return true;
+            case R.id.action_fav:
+                AppDatabase db = Room.databaseBuilder(getApplicationContext(),
+                        AppDatabase.class, "tournament").allowMainThreadQueries()
+                        .fallbackToDestructiveMigration().build();
+
+                if (db.playerDao().findById(player.getId()) == null) {
+                    db.playerDao().insert(player);
+                } else {
+                    showMessage("El jugador ya está en favoritos");
+                }
         }
         return super.onContextItemSelected(item);
+    }
+
+    @Override
+    public void listAllPlayers(List<Player> players) {
+        playerList.clear();
+        playerList.addAll(players);
+        playerAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void showMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

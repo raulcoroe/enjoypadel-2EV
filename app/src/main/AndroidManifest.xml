@@ -6,7 +6,9 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
+
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -19,34 +21,34 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".acitivities.AddCenterActivity"
+            android:name=".view.AddCenterView"
             android:exported="false" />
         <activity
-            android:name=".acitivities.SportCenterActivity"
+            android:name=".view.CenterListView"
             android:exported="false" />
         <activity
-            android:name=".acitivities.CenterDetailActivity"
+            android:name=".view.CenterDetailView"
             android:exported="false" />
         <activity
-            android:name=".acitivities.MatchDetailActivity"
+            android:name=".view.MatchDetailView"
             android:exported="false" />
         <activity
-            android:name=".acitivities.AddMatchActivity"
+            android:name=".view.AddMatchView"
             android:exported="false" />
         <activity
-            android:name=".acitivities.MatchActivity"
+            android:name=".view.MatchListView"
             android:exported="false" />
         <activity
-            android:name=".acitivities.Preferences"
+            android:name=".view.PreferenceView"
             android:exported="false" />
         <activity
-            android:name=".acitivities.AddPlayerActivity"
+            android:name=".view.AddPlayerView"
             android:exported="false" />
         <activity
-            android:name=".acitivities.PlayerActivity"
+            android:name=".view.PlayerListView"
             android:exported="false" />
         <activity
-            android:name=".acitivities.MainActivity"
+            android:name=".view.MainActivityView"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

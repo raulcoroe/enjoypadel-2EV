@@ -1,4 +1,4 @@
-package com.svalero.enjoypadel.acitivities;
+package com.svalero.enjoypadel.view;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -17,18 +17,23 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.svalero.enjoypadel.R;
+import com.svalero.enjoypadel.contract.AddCenterContract;
 import com.svalero.enjoypadel.database.AppDatabase;
-import com.svalero.enjoypadel.domain.SportCenter;
+import com.svalero.enjoypadel.domain.Center;
+import com.svalero.enjoypadel.presenter.AddCenterPresenter;
 
-public class AddCenterActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener {
+public class AddCenterView extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener, AddCenterContract.View {
 
     private GoogleMap map;
     private LatLng location;
+    private AddCenterPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_center);
+
+        presenter = new AddCenterPresenter(this);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_center);
         if (mapFragment != null)
@@ -63,19 +68,21 @@ public class AddCenterActivity extends AppCompatActivity implements OnMapReadyCa
 
     public void addCenter(View view){
         TextView nameCenterTv = findViewById(R.id.center_name);
-        SportCenter center = new SportCenter();
+        Center center = new Center();
 
-        if (nameCenterTv.getText().toString().equals("")){
+        if (nameCenterTv.getText().toString().equals("") || location == null){
             Toast.makeText(this, R.string.must_center_name, Toast.LENGTH_SHORT).show();
         } else {
-            AppDatabase db = Room.databaseBuilder(getApplicationContext(),
-                    AppDatabase.class, "tournament").allowMainThreadQueries()
-                    .fallbackToDestructiveMigration().build();
             center.setName(nameCenterTv.getText().toString());
             center.setLatitude(String.valueOf(location.latitude));
             center.setLongitude(String.valueOf(location.longitude));
-            db.sportCenterDao().insert(center);
+            presenter.addCenter(center);
             finish();
         }
+    }
+
+    @Override
+    public void showMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

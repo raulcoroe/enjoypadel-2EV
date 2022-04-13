@@ -7,4 +7,7 @@
         android:id="@+id/action_delete"
         android:checkable="false"
         android:title="@string/delete" />
+    <item
+        android:id="@+id/action_fav"
+        android:title="Marcar como favorito" />
 </menu>

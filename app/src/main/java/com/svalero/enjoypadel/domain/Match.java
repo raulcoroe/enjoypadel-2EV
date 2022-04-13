@@ -2,9 +2,11 @@ package com.svalero.enjoypadel.domain;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-import com.svalero.enjoypadel.R;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Match {
@@ -18,19 +20,23 @@ public class Match {
     private String date;
     @ColumnInfo
     private String matchScore;
-    @ColumnInfo
-    private String playerOne;
-    @ColumnInfo
-    private String playerTwo;
-    @ColumnInfo
-    private String playerThree;
-    @ColumnInfo
-    private String playerFour;
-    @ColumnInfo
-    private String sportCenter;
+    @Ignore
+    private Center center;
+
+    @Ignore
+    private Player[] players;
 
 
     public Match() {
+        players = new Player[4];
+    }
+
+    public Player[] getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(Player[] players) {
+        this.players = players;
     }
 
     public int getId() {
@@ -73,44 +79,12 @@ public class Match {
         this.matchScore = matchScore;
     }
 
-    public String getPlayerOne() {
-        return playerOne;
+    public Center getCenter() {
+        return center;
     }
 
-    public void setPlayerOne(String playerOne) {
-        this.playerOne = playerOne;
-    }
-
-    public String getPlayerTwo() {
-        return playerTwo;
-    }
-
-    public void setPlayerTwo(String playerTwo) {
-        this.playerTwo = playerTwo;
-    }
-
-    public String getPlayerThree() {
-        return playerThree;
-    }
-
-    public void setPlayerThree(String playerThree) {
-        this.playerThree = playerThree;
-    }
-
-    public String getPlayerFour() {
-        return playerFour;
-    }
-
-    public void setPlayerFour(String playerFour) {
-        this.playerFour = playerFour;
-    }
-
-    public String getSportCenter() {
-        return sportCenter;
-    }
-
-    public void setSportCenter(String sportCenter) {
-        this.sportCenter = sportCenter;
+    public void setCenter(Center center) {
+        this.center = center;
     }
 
     @Override

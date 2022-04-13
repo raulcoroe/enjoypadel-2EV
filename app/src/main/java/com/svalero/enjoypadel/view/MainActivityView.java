@@ -1,16 +1,16 @@
-package com.svalero.enjoypadel.acitivities;
+package com.svalero.enjoypadel.view;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 import com.svalero.enjoypadel.R;
+import com.svalero.enjoypadel.view.MatchListView;
+import com.svalero.enjoypadel.view.PlayerListView;
+import com.svalero.enjoypadel.view.CenterListView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivityView extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,17 +19,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void selectPlayers(View view){
-        Intent intent = new Intent(this, PlayerActivity.class);
+        Intent intent = new Intent(this, PlayerListView.class);
         startActivity(intent);
     }
 
     public void selectMatches(View view){
-        Intent intent = new Intent(this, MatchActivity.class);
+        Intent intent = new Intent(this, MatchListView.class);
         startActivity(intent);
     }
 
     public void selectLocations(View view){
-        Intent intent = new Intent(this, SportCenterActivity.class);
+        Intent intent = new Intent(this, CenterListView.class);
         startActivity(intent);
     }
 }

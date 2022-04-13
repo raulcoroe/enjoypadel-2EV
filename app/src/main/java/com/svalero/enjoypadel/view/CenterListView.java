@@ -1,9 +1,8 @@
-package com.svalero.enjoypadel.acitivities;
+package com.svalero.enjoypadel.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,28 +13,36 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.svalero.enjoypadel.R;
-import com.svalero.enjoypadel.database.AppDatabase;
-import com.svalero.enjoypadel.domain.Match;
-import com.svalero.enjoypadel.domain.SportCenter;
+import com.svalero.enjoypadel.contract.CenterListContract;
+import com.svalero.enjoypadel.domain.Center;
+import com.svalero.enjoypadel.presenter.CenterListPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SportCenterActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
+public class CenterListView extends AppCompatActivity implements AdapterView.OnItemClickListener, CenterListContract.View {
 
-    private List<SportCenter> centers;
-    private ArrayAdapter<SportCenter> centerAdapter;
+    private List<Center> centerList;
+    private ArrayAdapter<Center> centerAdapter;
+    private CenterListPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sport_center);
 
-        centers = new ArrayList<>();
+        presenter = new CenterListPresenter(this);
+        initialize();
+    }
+
+
+    public void initialize(){
+        centerList = new ArrayList<>();
         ListView lvCenters = findViewById(R.id.center_list);
-        centerAdapter = new ArrayAdapter<SportCenter>(this, android.R.layout.simple_list_item_1, centers);
+        centerAdapter = new ArrayAdapter<Center>(this, android.R.layout.simple_list_item_1, centerList);
         lvCenters.setAdapter(centerAdapter);
         registerForContextMenu(lvCenters);
 
@@ -46,13 +53,7 @@ public class SportCenterActivity extends AppCompatActivity implements AdapterVie
     protected void onResume() {
         super.onResume();
 
-        centers.clear();
-        AppDatabase db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "tournament").allowMainThreadQueries()
-                .fallbackToDestructiveMigration().build();
-
-        centers.addAll(db.sportCenterDao().getAll());
-        centerAdapter.notifyDataSetChanged();
+        presenter.loadAllCenters();
     }
 
     @Override
@@ -64,7 +65,7 @@ public class SportCenterActivity extends AppCompatActivity implements AdapterVie
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.add_center) {
-            Intent intent = new Intent(this, AddCenterActivity.class);
+            Intent intent = new Intent(this, AddCenterView.class);
             startActivity(intent);
             return true;
         }
@@ -80,18 +81,15 @@ public class SportCenterActivity extends AppCompatActivity implements AdapterVie
 
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        SportCenter center = centers.get(info.position);
+        Center center = centerList.get(info.position);
 
         if (item.getItemId() == R.id.delete_center) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setMessage(R.string.sure)
                         .setPositiveButton(R.string.yes,
                                 (dialog, which) -> {
-                                    AppDatabase db = Room.databaseBuilder(getApplicationContext(),
-                                            AppDatabase.class, "tournament").allowMainThreadQueries()
-                                            .fallbackToDestructiveMigration().build();
-                                    db.sportCenterDao().delete(center);
-                                    centers.remove(center);
+                                    presenter.deleteCenter(center);
+                                    centerList.remove(center);
                                     centerAdapter.notifyDataSetChanged();
                                 }
                         ).setNegativeButton(R.string.no,
@@ -104,12 +102,22 @@ public class SportCenterActivity extends AppCompatActivity implements AdapterVie
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        SportCenter center = centers.get(position);
+        Center center = centerList.get(position);
 
-        Intent intentDetail = new Intent(SportCenterActivity.this, CenterDetailActivity.class);
-        intentDetail.putExtra("name", center.getName());
-        intentDetail.putExtra("latitude", center.getLatitude());
-        intentDetail.putExtra("longitude", center.getLongitude());
+        Intent intentDetail = new Intent(CenterListView.this, CenterDetailView.class);
+        intentDetail.putExtra("centerId", center.getId());
         startActivity(intentDetail);
+    }
+
+    @Override
+    public void listAllCenters(List<Center> centers) {
+        centerList.clear();
+        centerList.addAll(centers);
+        centerAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void showMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

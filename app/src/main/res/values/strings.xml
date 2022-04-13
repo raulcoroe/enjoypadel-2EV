@@ -2,7 +2,7 @@
     <string name="app_name">Enjoy Padel</string>
     <string name="google_maps_key">AIzaSyA9DuscA3BNAypTwbe0Dd9xy-Wf3dVJxqM</string>
     <string name="smipper_text">Sport center location</string>
-    <string name="must_center_name">You must enter the name of the sport center</string>
+    <string name="must_center_name">You must enter the name and the location of the sport center</string>
     <string name="modify_match">Modify the match</string>
     <string name="sure">Are you sure?</string>
     <string name="yes">Yes</string>
